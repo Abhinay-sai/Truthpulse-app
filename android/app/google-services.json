@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "107248252673",
+    "project_id": "truthpulse-a1ddd",
+    "storage_bucket": "truthpulse-a1ddd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107248252673:android:9288834f6d44b198f78d00",
+        "android_client_info": {
+          "package_name": "com.example.truthpulse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnCQwPScAkbkze8L10kUYU5Fs5ailJRZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
