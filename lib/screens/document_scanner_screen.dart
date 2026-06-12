@@ -21,7 +21,7 @@ class _DocumentScannerScreenState extends State<DocumentScannerScreen> {
   String _statusMessage = '';
 
   Future<void> _pickDocument() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
+    FilePickerResult? result = await FilePicker.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['pdf', 'doc', 'docx', 'txt'],
       withData: true,
