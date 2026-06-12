@@ -88,8 +88,9 @@ class _DocumentScannerScreenState extends State<DocumentScannerScreen> {
         );
       } else {
         if (!mounted) return;
+        final errorMsg = response.body.length > 100 ? response.body.substring(0, 100) : response.body;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Document analysis failed.')),
+          SnackBar(content: Text('Document analysis failed. ${response.statusCode}: $errorMsg')),
         );
       }
     } catch (e) {

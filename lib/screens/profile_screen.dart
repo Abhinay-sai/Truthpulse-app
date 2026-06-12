@@ -8,6 +8,7 @@ import 'notification_screen.dart';
 import 'support_screen.dart';
 import 'legal_screen.dart';
 import 'login_screen.dart';
+import 'about_app_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -233,7 +234,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: profileTile(
                 Icons.info_outline,
                 "About App",
-                () { ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Coming Soon'))); },
+                () => Navigator.push(context, FigmaPageRoute(child: const AboutAppScreen())),
               ),
             ),
 
