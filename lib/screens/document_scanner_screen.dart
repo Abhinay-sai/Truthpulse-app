@@ -48,19 +48,19 @@ class _DocumentScannerScreenState extends State<DocumentScannerScreen> {
 
       var request = http.MultipartRequest(
         'POST',
-        Uri.parse('${AuthService.baseUrl}/analyze-document'),
+        Uri.parse('${AuthService.baseUrl}/analyze'),
       );
       request.headers['Authorization'] = 'Bearer $token';
       request.fields['deepScan'] = deepScan.toString();
       if (_selectedFile!.bytes != null) {
         request.files.add(http.MultipartFile.fromBytes(
-          'document',
+          'media',
           _selectedFile!.bytes!,
           filename: _selectedFile!.name,
         ));
       } else if (_selectedFile!.path != null) {
         request.files.add(await http.MultipartFile.fromPath(
-          'document',
+          'media',
           _selectedFile!.path!,
         ));
       }

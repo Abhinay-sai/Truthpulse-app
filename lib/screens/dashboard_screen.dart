@@ -341,13 +341,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final tools = [
       _ToolData(iconData: Icons.travel_explore, label: 'URL Scan', color: FigmaTheme.neonBlue, screen: const UrlScanScreen()),
       _ToolData(iconData: Icons.mic_none_rounded, label: 'Audio', color: FigmaTheme.neonPurple, screen: const AudioAnalysisScreen()),
-      _ToolData(iconData: Icons.camera_alt_outlined, label: 'Camera', color: FigmaTheme.neonCyan, screen: const CameraScreen()),
       _ToolData(iconData: Icons.library_add_check_outlined, label: 'Batch', color: Colors.pinkAccent, screen: const BatchScanScreen()),
       _ToolData(iconData: Icons.article_outlined, label: 'News Feed', color: FigmaTheme.neonBlue, screen: const NewsFeedScreen()),
       _ToolData(iconData: Icons.lightbulb_outline, label: 'Learning', color: FigmaTheme.success, screen: const LearningHubScreen()),
       _ToolData(iconData: Icons.fact_check_outlined, label: 'Spot Fake', color: FigmaTheme.danger, screen: const QuizScreen()),
       _ToolData(iconData: Icons.people_outline_rounded, label: 'Community', color: FigmaTheme.neonPurple, screen: const CommunityFeedScreen()),
-      _ToolData(iconData: Icons.workspace_premium_outlined, label: 'PRO', color: Colors.amber, screen: const PremiumPaywallScreen()),
       _ToolData(iconData: Icons.document_scanner_outlined, label: 'Text Scan', color: Colors.amberAccent, screen: const TextAnalysisScreen()),
       _ToolData(iconData: Icons.public, label: 'Social', color: FigmaTheme.neonCyan, screen: const SocialScannerScreen()),
       _ToolData(iconData: Icons.description_outlined, label: 'Document', color: FigmaTheme.textMuted, screen: const DocumentScannerScreen()),
