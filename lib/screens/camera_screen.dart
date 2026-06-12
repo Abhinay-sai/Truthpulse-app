@@ -20,11 +20,6 @@ class _CameraScreenState extends State<CameraScreen> {
   List<CameraDescription>? cameras;
   bool isCameraReady = false;
   bool isAnalyzing = false;
-  
-  bool isVideoMode = false;
-  bool isRecording = false;
-  Timer? _timer;
-  int _recordSeconds = 0;
 
   @override
   void initState() {
@@ -38,57 +33,12 @@ class _CameraScreenState extends State<CameraScreen> {
       controller = CameraController(
         cameras![0],
         ResolutionPreset.medium,
-        enableAudio: true,
+        enableAudio: false,
       );
       await controller!.initialize();
       setState(() {
         isCameraReady = true;
       });
-    }
-  }
-
-  void _startTimer() {
-    _recordSeconds = 0;
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _recordSeconds++;
-      });
-      // Optional max recording limit e.g. 15s
-      if (_recordSeconds >= 15) {
-        _stopRecordingAndAnalyze();
-      }
-    });
-  }
-
-  Future<void> _stopRecordingAndAnalyze() async {
-    _timer?.cancel();
-    if (!controller!.value.isRecordingVideo) return;
-    
-    setState(() {
-      isRecording = false;
-      isAnalyzing = true;
-    });
-
-    try {
-      final file = await controller!.stopVideoRecording();
-      await _uploadMedia(await file.readAsBytes(), file.name);
-    } catch (e) {
-      _showError(e);
-    }
-  }
-
-  Future<void> _startRecording() async {
-    if (!controller!.value.isInitialized) return;
-    if (controller!.value.isRecordingVideo) return;
-
-    try {
-      await controller!.startVideoRecording();
-      setState(() {
-        isRecording = true;
-      });
-      _startTimer();
-    } catch (e) {
-      _showError(e);
     }
   }
 
@@ -167,9 +117,7 @@ class _CameraScreenState extends State<CameraScreen> {
   void _showError(dynamic e) {
     setState(() {
       isAnalyzing = false;
-      isRecording = false;
     });
-    _timer?.cancel();
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error: $e")));
     }
@@ -177,15 +125,8 @@ class _CameraScreenState extends State<CameraScreen> {
 
   @override
   void dispose() {
-    _timer?.cancel();
     controller?.dispose();
     super.dispose();
-  }
-
-  String _formatTime(int seconds) {
-    final m = (seconds / 60).floor().toString().padLeft(2, '0');
-    final s = (seconds % 60).toString().padLeft(2, '0');
-    return "$m:$s";
   }
 
   @override
@@ -210,26 +151,10 @@ class _CameraScreenState extends State<CameraScreen> {
                           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                           onPressed: () => Navigator.pop(context),
                         ),
-                        if (isRecording)
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: Colors.redAccent.withValues(alpha: 0.8),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.fiber_manual_record, color: Colors.white, size: 16),
-                                const SizedBox(width: 8),
-                                Text(_formatTime(_recordSeconds), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                              ],
-                            ),
-                          )
-                        else
-                          const Text(
-                            "Live AI Scanner",
-                            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+                        const Text(
+                          "Live AI Scanner",
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
                         const SizedBox(width: 40),
                       ],
                     ),
@@ -246,7 +171,7 @@ class _CameraScreenState extends State<CameraScreen> {
                         children: [
                           const CircularProgressIndicator(color: FigmaTheme.neonPurple),
                           const SizedBox(height: 20),
-                          const Text("Uploading securely to Gemini...", style: TextStyle(color: Colors.white)),
+                          const Text("Uploading securely...", style: TextStyle(color: Colors.white)),
                         ],
                       ),
                     ),
@@ -267,55 +192,18 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // Mode Switcher
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () { if (!isRecording && !isAnalyzing) setState(() => isVideoMode = false); },
-                              child: Text(
-                                "PHOTO",
-                                style: TextStyle(
-                                  color: !isVideoMode ? FigmaTheme.neonCyan : Colors.white54,
-                                  fontWeight: !isVideoMode ? FontWeight.bold : FontWeight.normal,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 30),
-                            GestureDetector(
-                              onTap: () { if (!isRecording && !isAnalyzing) setState(() => isVideoMode = true); },
-                              child: Text(
-                                "VIDEO",
-                                style: TextStyle(
-                                  color: isVideoMode ? FigmaTheme.neonCyan : Colors.white54,
-                                  fontWeight: isVideoMode ? FontWeight.bold : FontWeight.normal,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-
                         // Shutter Button
                         GestureDetector(
-                          onTap: isAnalyzing 
-                            ? null 
-                            : (isVideoMode 
-                                ? (isRecording ? _stopRecordingAndAnalyze : _startRecording)
-                                : _capturePhotoAndAnalyze),
+                          onTap: isAnalyzing ? null : _capturePhotoAndAnalyze,
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            width: isRecording ? 80 : 95,
-                            height: isRecording ? 80 : 95,
+                            width: 95,
+                            height: 95,
                             decoration: BoxDecoration(
-                              shape: isRecording ? BoxShape.rectangle : BoxShape.circle,
-                              borderRadius: isRecording ? BorderRadius.circular(20) : BorderRadius.circular(50),
+                              shape: BoxShape.circle,
+                              borderRadius: BorderRadius.circular(50),
                               border: Border.all(color: Colors.white, width: 4),
-                              color: isVideoMode 
-                                ? Colors.redAccent 
-                                : Colors.white.withValues(alpha: 0.3),
+                              color: Colors.white.withValues(alpha: 0.3),
                             ),
                           ),
                         ),

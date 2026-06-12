@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -16,15 +16,21 @@ class DocumentScannerScreen extends StatefulWidget {
 }
 
 class _DocumentScannerScreenState extends State<DocumentScannerScreen> {
-  File? _selectedFile;
+  PlatformFile? _selectedFile;
   bool _isScanning = false;
   String _statusMessage = '';
 
   Future<void> _pickDocument() async {
-    // Mocking document picker for now
-    setState(() {
-      _selectedFile = File('dummy_document.pdf');
-    });
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf', 'doc', 'docx', 'txt'],
+      withData: true,
+    );
+    if (result != null) {
+      setState(() {
+        _selectedFile = result.files.first;
+      });
+    }
   }
 
   Future<void> _startScan() async {
@@ -46,10 +52,18 @@ class _DocumentScannerScreenState extends State<DocumentScannerScreen> {
       );
       request.headers['Authorization'] = 'Bearer $token';
       request.fields['deepScan'] = deepScan.toString();
-      request.files.add(await http.MultipartFile.fromPath(
-        'document',
-        _selectedFile!.path,
-      ));
+      if (_selectedFile!.bytes != null) {
+        request.files.add(http.MultipartFile.fromBytes(
+          'document',
+          _selectedFile!.bytes!,
+          filename: _selectedFile!.name,
+        ));
+      } else if (_selectedFile!.path != null) {
+        request.files.add(await http.MultipartFile.fromPath(
+          'document',
+          _selectedFile!.path!,
+        ));
+      }
 
       final streamedResponse = await request.send();
       final response = await http.Response.fromStream(streamedResponse);
@@ -150,7 +164,7 @@ class _DocumentScannerScreenState extends State<DocumentScannerScreen> {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                _selectedFile != null ? _selectedFile!.path.split(Platform.pathSeparator).last : 'Tap to select document',
+                                _selectedFile != null ? _selectedFile!.name : 'Tap to select document',
                                 style: TextStyle(color: _selectedFile != null ? Colors.white : Colors.white54, fontSize: 16),
                                 textAlign: TextAlign.center,
                               ),

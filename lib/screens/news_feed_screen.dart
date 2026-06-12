@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../data/auth_service.dart';
+import 'article_screen.dart';
 
 class NewsFeedScreen extends StatefulWidget {
   const NewsFeedScreen({super.key});
@@ -95,7 +96,14 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                           child: Text(article['subtitle'] ?? '', style: const TextStyle(color: Colors.white70)),
                         ),
                         trailing: const Icon(Icons.arrow_forward_ios, color: Colors.white54, size: 16),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ArticleScreen(article: article),
+                            ),
+                          );
+                        },
                       ),
                     );
                   },
