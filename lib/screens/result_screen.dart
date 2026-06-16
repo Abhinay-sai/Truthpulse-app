@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io';
+import 'dart:convert';
+import 'package:path_provider/path_provider.dart';
+import 'package:universal_html/html.dart' as html;
 
 class ResultScreen extends StatelessWidget {
 
@@ -22,6 +27,58 @@ class ResultScreen extends StatelessWidget {
     required this.scanAccuracy,
     this.showAiSuggestions = true,
   });
+
+  Future<void> _downloadReport(BuildContext context) async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Generating report...')),
+    );
+
+    String reportContent = """
+=========================================
+      TRUTHPULSE AI ANALYSIS REPORT
+=========================================
+Date: ${DateTime.now().toLocal().toString().split('.')[0]}
+Status: $status
+Trust Score: $trustScore
+AI Probability: $aiProbability
+
+--- Detailed Explanation ---
+$explanation
+=========================================
+""";
+
+    try {
+      if (kIsWeb) {
+        final bytes = utf8.encode(reportContent);
+        final blob = html.Blob([bytes]);
+        final url = html.Url.createObjectUrlFromBlob(blob);
+        final anchor = html.document.createElement('a') as html.AnchorElement
+          ..href = url
+          ..style.display = 'none'
+          ..download = 'TruthPulse_Report_${DateTime.now().millisecondsSinceEpoch}.txt';
+        html.document.body!.children.add(anchor);
+        anchor.click();
+        html.document.body!.children.remove(anchor);
+        html.Url.revokeObjectUrl(url);
+      } else {
+        final directory = await getApplicationDocumentsDirectory();
+        final file = File('${directory.path}/TruthPulse_Report_${DateTime.now().millisecondsSinceEpoch}.txt');
+        await file.writeAsString(reportContent);
+      }
+      
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Report downloaded successfully!'), backgroundColor: Colors.green),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error downloading: $e'), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -317,14 +374,7 @@ class ResultScreen extends StatelessWidget {
                     child: actionButton(
                       "Download",
                       Colors.blue,
-                      () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Report downloading to device...'),
-                            backgroundColor: Colors.blue,
-                          ),
-                        );
-                      },
+                      () => _downloadReport(context),
                     ),
                   ),
                 ],
