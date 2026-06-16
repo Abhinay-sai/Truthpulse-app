@@ -130,7 +130,7 @@ class _QuizScreenState extends State<QuizScreen> {
         currentIndex++;
       });
     } else {
-      Navigator.pushReplacement(context, FigmaPageRoute(child: const QuizResultScreen()));
+      Navigator.pushReplacement(context, FigmaPageRoute(child: QuizResultScreen(score: score, total: questions.length)));
     }
   }
 
