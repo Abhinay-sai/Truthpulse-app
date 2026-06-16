@@ -154,6 +154,22 @@ class AuthService {
     }
   }
 
+  static Future<Map<String, dynamic>> verifyLogin2FA(String userId, String pin) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/auth/2fa/login-verify'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'userId': userId, 'pin': pin}),
+    );
+    final data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      await saveToken(data['token']);
+      await saveUser(data['user']);
+      return data['user'];
+    } else {
+      throw AuthException(data['error'] ?? 'Invalid PIN');
+    }
+  }
+
   // ─── Get Current User ────────────────────────────────────
 
   static Future<Map<String, dynamic>?> getCurrentUser() async {
