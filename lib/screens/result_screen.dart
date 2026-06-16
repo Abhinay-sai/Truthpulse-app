@@ -317,7 +317,14 @@ class ResultScreen extends StatelessWidget {
                     child: actionButton(
                       "Download",
                       Colors.blue,
-                          () {},
+                      () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Report downloading to device...'),
+                            backgroundColor: Colors.blue,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
