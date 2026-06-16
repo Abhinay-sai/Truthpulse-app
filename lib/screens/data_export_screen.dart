@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -12,7 +13,7 @@ class DataExportScreen extends StatelessWidget {
 
   const DataExportScreen({super.key});
 
-  bool _isDownloading = false;
+  
 
   Future<void> _downloadData(BuildContext context) async {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Gathering data archive...')));

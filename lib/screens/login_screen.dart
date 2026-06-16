@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import '../data/auth_service.dart';
 import '../data/design_system.dart';
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen>
                   Navigator.pop(context); // close dialog
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => const MainNavigation()),
+                    MaterialPageRoute(builder: (context) => const DashboardScreen()),
                     (route) => false,
                   );
                 } catch (e) {

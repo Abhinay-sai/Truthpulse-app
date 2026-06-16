@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -106,7 +107,7 @@ class _TwoFactorAuthScreenState extends State<TwoFactorAuthScreen> {
                       ),
                       Switch(
                         value: _is2FAEnabled,
-                        activeColor: Colors.purpleAccent,
+                        activeTrackColor: Colors.purpleAccent,
                         onChanged: (val) {
                           setState(() {
                             _is2FAEnabled = val;

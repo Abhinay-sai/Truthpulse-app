@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -81,9 +82,16 @@ class _ActiveSessionsScreenState extends State<ActiveSessionsScreen> {
             style: TextStyle(color: Colors.white70, fontSize: 15, height: 1.5),
           ),
           const SizedBox(height: 30),
-          _buildSessionCard(context, "Windows PC - Chrome", "Delhi, India • Active Now", Icons.laptop_mac, true),
-          _buildSessionCard(context, "iPhone 15 Pro", "Mumbai, India • Last active 2 hours ago", Icons.phone_iphone, false),
-          _buildSessionCard(context, "MacBook Pro M2", "Bangalore, India • Last active yesterday", Icons.laptop_mac, false),
+          if (_isLoading) const Center(child: CircularProgressIndicator(color: Colors.greenAccent)),
+          if (!_isLoading && _sessions.isEmpty) const Text("No active sessions found.", style: TextStyle(color: Colors.white70)),
+          if (!_isLoading) ..._sessions.map((s) => _buildSessionCard(
+            context,
+            s['deviceName'] ?? 'Unknown Device',
+            "${s['location']} • Last active: ${s['lastActive']?.toString().split('T')[0]}",
+            Icons.devices,
+            false,
+            s['token']
+          )),
         ],
       ),
     );
