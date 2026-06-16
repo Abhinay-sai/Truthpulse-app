@@ -81,10 +81,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       }
       
       if (_passwordController.text.isNotEmpty) {
-        if (_passwordController.text.length < 6) {
-          throw Exception("Password must be at least 6 characters.");
-        }
-        body['password'] = _passwordController.text;
+        final pass = _passwordController.text;
+        if (pass.length < 6) throw Exception("Password must be at least 6 characters.");
+        if (!pass.contains(RegExp(r'[A-Z]'))) throw Exception("Password needs an uppercase letter.");
+        if (!pass.contains(RegExp(r'[0-9]'))) throw Exception("Password needs a number.");
+        if (!pass.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'))) throw Exception("Password needs a special character.");
+        body['password'] = pass;
       }
 
       final response = await http.put(

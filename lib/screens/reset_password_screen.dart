@@ -29,6 +29,24 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       setState(() => _error = "Please fill in all fields");
       return;
     }
+
+    final pass = _passwordController.text;
+    if (pass.length < 6) {
+      setState(() => _error = "Password must be at least 6 characters");
+      return;
+    }
+    if (!pass.contains(RegExp(r'[A-Z]'))) {
+      setState(() => _error = "Password needs an uppercase letter");
+      return;
+    }
+    if (!pass.contains(RegExp(r'[0-9]'))) {
+      setState(() => _error = "Password needs a number");
+      return;
+    }
+    if (!pass.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'))) {
+      setState(() => _error = "Password needs a special character");
+      return;
+    }
     
     setState(() {
       _isLoading = true;

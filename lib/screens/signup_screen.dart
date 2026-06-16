@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../data/auth_service.dart';
 import '../data/design_system.dart';
 import 'dashboard_screen.dart';
+import 'email_verification_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -61,11 +62,12 @@ class _SignupScreenState extends State<SignupScreen>
       );
 
       if (mounted) {
-        // Navigation straight to Dashboard after successful signup
-        Navigator.pushAndRemoveUntil(
+        // Navigate to Email Verification screen after successful signup
+        Navigator.pushReplacement(
           context,
-          FigmaPageRoute(child: const DashboardScreen()),
-          (route) => false,
+          FigmaPageRoute(
+            child: EmailVerificationScreen(email: _emailController.text.trim()),
+          ),
         );
       }
     } on AuthException catch (e) {
@@ -236,7 +238,16 @@ class _SignupScreenState extends State<SignupScreen>
                                 return 'Password is required';
                               }
                               if (v.length < 6) {
-                                return 'Password must be at least 6 characters';
+                                return 'At least 6 characters';
+                              }
+                              if (!v.contains(RegExp(r'[A-Z]'))) {
+                                return 'At least 1 uppercase letter';
+                              }
+                              if (!v.contains(RegExp(r'[0-9]'))) {
+                                return 'At least 1 number';
+                              }
+                              if (!v.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'))) {
+                                return 'At least 1 special character';
                               }
                               return null;
                             },

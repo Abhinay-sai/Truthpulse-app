@@ -51,8 +51,8 @@ class AuthService {
 
   // ─── Register ────────────────────────────────────────────
 
-  /// Returns the user map on success, throws on failure.
-  static Future<Map<String, dynamic>> register({
+  /// Returns nothing on success (OTP sent). Throws AuthException on failure.
+  static Future<void> register({
     required String name,
     required String email,
     required String password,
@@ -71,12 +71,54 @@ class AuthService {
 
     final data = jsonDecode(response.body) as Map<String, dynamic>;
 
-    if (response.statusCode == 201) {
+    if (response.statusCode != 201) {
+      throw AuthException(data['error'] ?? 'Registration failed');
+    }
+  }
+
+  // ─── Verify Email ────────────────────────────────────────
+
+  /// Returns the user map on success, throws AuthException on failure.
+  static Future<Map<String, dynamic>> verifyEmail({
+    required String email,
+    required String otp,
+  }) async {
+    final response = await http
+        .post(
+          Uri.parse('$baseUrl/auth/verify-email'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            'email': email.trim().toLowerCase(),
+            'otp': otp.trim(),
+          }),
+        )
+        .timeout(const Duration(seconds: 15));
+
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+
+    if (response.statusCode == 200) {
       await saveToken(data['token'] as String);
       await saveUser(data['user'] as Map<String, dynamic>);
       return data['user'] as Map<String, dynamic>;
     } else {
-      throw AuthException(data['error'] ?? 'Registration failed');
+      throw AuthException(data['error'] ?? 'Verification failed');
+    }
+  }
+
+  // ─── Resend Verification ─────────────────────────────────
+
+  static Future<void> resendVerification(String email) async {
+    final response = await http
+        .post(
+          Uri.parse('$baseUrl/auth/resend-verification'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({'email': email.trim().toLowerCase()}),
+        )
+        .timeout(const Duration(seconds: 15));
+
+    if (response.statusCode != 200) {
+      final data = jsonDecode(response.body);
+      throw AuthException(data['error'] ?? 'Failed to resend verification code');
     }
   }
 
