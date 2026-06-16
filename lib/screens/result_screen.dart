@@ -8,6 +8,7 @@ class ResultScreen extends StatelessWidget {
   final String explanation;
   final String processingTime;
   final String scanAccuracy;
+  final bool showAiSuggestions;
 
   const ResultScreen({
 
@@ -19,6 +20,7 @@ class ResultScreen extends StatelessWidget {
     required this.explanation,
     required this.processingTime,
     required this.scanAccuracy,
+    this.showAiSuggestions = true,
   });
 
   @override
@@ -168,7 +170,7 @@ class ResultScreen extends StatelessWidget {
 
               const SizedBox(height: 35),
 
-              // AI EXPLANATION CARD
+              if (showAiSuggestions) // AI EXPLANATION CARD
 
               Container(
 

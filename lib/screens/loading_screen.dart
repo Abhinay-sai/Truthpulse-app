@@ -43,9 +43,11 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
   Future<void> _processScan() async {
     // 1. Fetch custom threshold
     double threshold = 70.0;
+    bool showAiSuggestions = true;
     try {
       final prefs = await SharedPreferences.getInstance();
       threshold = prefs.getDouble('setting_confidenceThreshold') ?? 70.0;
+      showAiSuggestions = prefs.getBool('setting_aiSuggestions') ?? true;
     } catch (e) {
       // ignore
     }
@@ -77,6 +79,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
           explanation: widget.explanation,
           processingTime: widget.processingTime,
           scanAccuracy: widget.scanAccuracy,
+          showAiSuggestions: showAiSuggestions,
         ),
       ),
     );

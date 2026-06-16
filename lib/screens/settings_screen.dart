@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../data/design_system.dart';
 import '../data/auth_service.dart';
@@ -43,6 +44,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _saveSetting(String key, bool value) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('setting_$key', value);
+
+    if (key == 'notifications' || key == 'autoSave' || key == 'deepScan') {
+      try {
+        final token = await AuthService.getToken();
+        if (token != null) {
+          await http.put(
+            Uri.parse('${AuthService.baseUrl}/user/settings'),
+            headers: {
+              'Authorization': 'Bearer $token',
+              'Content-Type': 'application/json',
+            },
+            body: jsonEncode({key: value}),
+          );
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
   }
 
   Future<void> _saveSettingDouble(String key, double value) async {
