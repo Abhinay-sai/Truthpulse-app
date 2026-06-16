@@ -143,6 +143,9 @@ class AuthService {
     final data = jsonDecode(response.body) as Map<String, dynamic>;
 
     if (response.statusCode == 200) {
+      if (data['requires2FA'] == true) {
+        return { 'requires2FA': true, 'userId': data['userId'] };
+      }
       await saveToken(data['token'] as String);
       await saveUser(data['user'] as Map<String, dynamic>);
       return data['user'] as Map<String, dynamic>;

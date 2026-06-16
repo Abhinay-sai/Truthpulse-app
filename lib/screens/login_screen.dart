@@ -73,6 +73,54 @@ class _LoginScreenState extends State<LoginScreen>
     }
   }
 
+  void _show2FADialog(String userId) {
+    final TextEditingController pinController = TextEditingController();
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFF150530),
+          title: const Text("Two-Factor Authentication", style: TextStyle(color: Colors.white)),
+          content: TextField(
+            controller: pinController,
+            keyboardType: TextInputType.number,
+            maxLength: 6,
+            style: const TextStyle(color: Colors.white, letterSpacing: 8, fontSize: 20),
+            decoration: const InputDecoration(
+              hintText: "Enter 6-digit PIN",
+              hintStyle: TextStyle(color: Colors.white38),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel", style: TextStyle(color: Colors.white54)),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent),
+              onPressed: () async {
+                try {
+                  await AuthService.verifyLogin2FA(userId, pinController.text);
+                  if (!mounted) return;
+                  Navigator.pop(context); // close dialog
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainNavigation()),
+                    (route) => false,
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+                }
+              },
+              child: const Text("Verify", style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -319,6 +367,54 @@ class _EmailFieldState extends State<_EmailField> {
     super.dispose();
   }
 
+  void _show2FADialog(String userId) {
+    final TextEditingController pinController = TextEditingController();
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFF150530),
+          title: const Text("Two-Factor Authentication", style: TextStyle(color: Colors.white)),
+          content: TextField(
+            controller: pinController,
+            keyboardType: TextInputType.number,
+            maxLength: 6,
+            style: const TextStyle(color: Colors.white, letterSpacing: 8, fontSize: 20),
+            decoration: const InputDecoration(
+              hintText: "Enter 6-digit PIN",
+              hintStyle: TextStyle(color: Colors.white38),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel", style: TextStyle(color: Colors.white54)),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent),
+              onPressed: () async {
+                try {
+                  await AuthService.verifyLogin2FA(userId, pinController.text);
+                  if (!mounted) return;
+                  Navigator.pop(context); // close dialog
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainNavigation()),
+                    (route) => false,
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+                }
+              },
+              child: const Text("Verify", style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -382,6 +478,54 @@ class _PasswordFieldState extends State<_PasswordField> {
   void dispose() {
     _focus.dispose();
     super.dispose();
+  }
+
+  void _show2FADialog(String userId) {
+    final TextEditingController pinController = TextEditingController();
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFF150530),
+          title: const Text("Two-Factor Authentication", style: TextStyle(color: Colors.white)),
+          content: TextField(
+            controller: pinController,
+            keyboardType: TextInputType.number,
+            maxLength: 6,
+            style: const TextStyle(color: Colors.white, letterSpacing: 8, fontSize: 20),
+            decoration: const InputDecoration(
+              hintText: "Enter 6-digit PIN",
+              hintStyle: TextStyle(color: Colors.white38),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel", style: TextStyle(color: Colors.white54)),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent),
+              onPressed: () async {
+                try {
+                  await AuthService.verifyLogin2FA(userId, pinController.text);
+                  if (!mounted) return;
+                  Navigator.pop(context); // close dialog
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainNavigation()),
+                    (route) => false,
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+                }
+              },
+              child: const Text("Verify", style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
