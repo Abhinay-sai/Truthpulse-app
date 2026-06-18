@@ -68,7 +68,7 @@ class AuthService {
             'password': password,
           }),
         )
-        .timeout(const Duration(seconds: 15));
+        .timeout(const Duration(seconds: 60));
 
     final data = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -93,7 +93,7 @@ class AuthService {
             'otp': otp.trim(),
           }),
         )
-        .timeout(const Duration(seconds: 15));
+        .timeout(const Duration(seconds: 60));
 
     final data = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -115,7 +115,7 @@ class AuthService {
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({'email': email.trim().toLowerCase()}),
         )
-        .timeout(const Duration(seconds: 15));
+        .timeout(const Duration(seconds: 60));
 
     if (response.statusCode != 200) {
       final data = jsonDecode(response.body);
@@ -139,7 +139,7 @@ class AuthService {
             'password': password,
           }),
         )
-        .timeout(const Duration(seconds: 15));
+        .timeout(const Duration(seconds: 60));
 
     final data = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -206,7 +206,7 @@ class AuthService {
       Uri.parse('$baseUrl/auth/forgot-password'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'email': email.trim().toLowerCase()}),
-    ).timeout(const Duration(seconds: 15));
+    ).timeout(const Duration(seconds: 60));
 
     if (response.statusCode != 200) {
       final data = jsonDecode(response.body);
@@ -228,7 +228,7 @@ class AuthService {
         'token': token.trim(),
         'newPassword': newPassword,
       }),
-    ).timeout(const Duration(seconds: 15));
+    ).timeout(const Duration(seconds: 60));
 
     if (response.statusCode != 200) {
       final data = jsonDecode(response.body);
