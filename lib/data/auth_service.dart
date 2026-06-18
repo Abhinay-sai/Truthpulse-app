@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   // Live backend URL on Render
-  static String get baseUrl => 'https://abhinay-truthpulse-server.onrender.com';
+  static String get baseUrl => 'https://truthpulse-backend.onrender.com';
   // static String get baseUrl => 'http://localhost:5000';
 
   static const _tokenKey = 'auth_token';
