@@ -88,15 +88,22 @@ class _LoginScreenState extends State<LoginScreen>
         return AlertDialog(
           backgroundColor: const Color(0xFF150530),
           title: const Text("Two-Factor Authentication", style: TextStyle(color: Colors.white)),
-          content: TextField(
-            controller: pinController,
-            keyboardType: TextInputType.number,
-            maxLength: 6,
-            style: const TextStyle(color: Colors.white, letterSpacing: 8, fontSize: 20),
-            decoration: const InputDecoration(
-              hintText: "Enter 6-digit PIN",
-              hintStyle: TextStyle(color: Colors.white38),
-            ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text("An OTP has been sent to your email.", style: TextStyle(color: Colors.white70)),
+              const SizedBox(height: 16),
+              TextField(
+                controller: pinController,
+                keyboardType: TextInputType.number,
+                maxLength: 6,
+                style: const TextStyle(color: Colors.white, letterSpacing: 8, fontSize: 20),
+                decoration: const InputDecoration(
+                  hintText: "Enter 6-digit OTP",
+                  hintStyle: TextStyle(color: Colors.white38),
+                ),
+              ),
+            ],
           ),
           actions: [
             TextButton(

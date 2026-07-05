@@ -14,7 +14,6 @@ class TwoFactorAuthScreen extends StatefulWidget {
 
 class _TwoFactorAuthScreenState extends State<TwoFactorAuthScreen> {
   bool _is2FAEnabled = false;
-  String? _qrCodeUrl;
   final TextEditingController _pinController = TextEditingController();
 
   Future<void> _generate2FA() async {
@@ -25,10 +24,9 @@ class _TwoFactorAuthScreenState extends State<TwoFactorAuthScreen> {
         headers: {'Authorization': 'Bearer $token'},
       );
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        setState(() {
-          _qrCodeUrl = data['qrCode'];
-        });
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('OTP sent to your email.')));
+        }
       }
     } catch (e) {
       // ignore
@@ -84,7 +82,7 @@ class _TwoFactorAuthScreenState extends State<TwoFactorAuthScreen> {
             ),
             const SizedBox(height: 15),
             const Text(
-              "Add an extra layer of security to your TruthPulse account by enabling Two-Factor Authentication (2FA) via an authenticator app.",
+              "Add an extra layer of security to your TruthPulse account by enabling Two-Factor Authentication (2FA) via Email OTP.",
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white70, fontSize: 16, height: 1.5),
             ),
@@ -120,23 +118,9 @@ class _TwoFactorAuthScreenState extends State<TwoFactorAuthScreen> {
                     ],
                   ),
                   if (_is2FAEnabled) ...[
-                    const SizedBox(height: 30),
-                    Container(
-                      width: 200,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Center(
-                        child: _qrCodeUrl != null 
-                            ? Image.network(_qrCodeUrl!)
-                            : const CircularProgressIndicator(color: Colors.purpleAccent),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     const Text(
-                      "Scan this QR code with Google Authenticator or Authy.",
+                      "An OTP has been sent to your registered email.\nEnter it below to enable 2FA.",
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white70, fontSize: 14),
                     ),
