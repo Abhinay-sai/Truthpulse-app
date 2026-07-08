@@ -5,6 +5,7 @@ import '../data/design_system.dart';
 import 'dashboard_screen.dart';
 import 'signup_screen.dart';
 import 'forgot_password_screen.dart';
+import 'email_verification_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -70,7 +71,18 @@ class _LoginScreenState extends State<LoginScreen>
         );
       }
     } on AuthException catch (e) {
-      setState(() => _errorMessage = e.message);
+      if (e.message.contains("verify your email") || e.message.contains("Please verify your email before logging in")) {
+        if (mounted) {
+          Navigator.pushReplacement(
+            context,
+            FigmaPageRoute(
+              child: EmailVerificationScreen(email: _emailController.text.trim()),
+            ),
+          );
+        }
+      } else {
+        setState(() => _errorMessage = e.message);
+      }
     } catch (e) {
       setState(() =>
           _errorMessage = 'Could not connect to server. Check your connection.');
