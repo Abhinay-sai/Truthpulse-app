@@ -1634,7 +1634,7 @@ Each object must have:
     res.json(questions);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to generate quiz questions" });
+    res.status(500).json({ error: "Failed to generate quiz questions", details: error.message });
   }
 });
 
@@ -1657,7 +1657,7 @@ Each object must have:
     res.json(news);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to generate news" });
+    res.status(500).json({ error: "Failed to generate news", details: error.message });
   }
 });
 
@@ -1681,7 +1681,7 @@ Each object must have:
     res.json(articles);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to generate learning content" });
+    res.status(500).json({ error: "Failed to generate learning content", details: error.message });
   }
 });
 
