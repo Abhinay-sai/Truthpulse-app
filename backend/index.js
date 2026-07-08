@@ -1068,97 +1068,7 @@ Text to analyze:
   }
 );
 
-// ================================
-// ANALYZE URL API
-// ================================
 
-app.post(
-  '/analyze-url',
-  authenticateToken,
-  async (req, res) => {
-    try {
-      const { url } = req.body;
-      if (!url) {
-        return res.status(400).json({ error: "URL is required" });
-      }
-
-      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
-
-      const deepScanInstruction = userSettings.deepScan ? "(DEEP SCAN MODE ENABLED: Analyze at a rigorous forensic level. Provide a highly detailed and technical explanation of any anomalies found.) " : "";
-    const prompt = deepScanInstruction + `
-Analyze the content at the following URL. Note: you may need to rely on the URL structure or general web context if direct crawling fails.
-Determine whether the content typically found at this URL or similar URLs appears to be AI-generated or human-created.
-Analyze the likelihood of it being a deepfake, synthetic media, or AI-generated text based on the URL context.
-
-You MUST return your response as a valid JSON object without any markdown formatting or backticks. 
-The JSON must have the following exact structure:
-{
-  "aiProbability": number (from 0 to 100),
-  "trustScore": number (from 0 to 100),
-  "status": string (either "Authentic" or "AI Generated"),
-  "explanation": string (short professional explanation of the analysis)
-}
-
-URL to analyze:
-"${url}"
-`;
-
-      const result = await model.generateContent([prompt]);
-      
-      let rawText = result.response.text();
-      rawText = rawText.replace(/```json/gi, "").replace(/```/g, "").trim();
-      
-      let aiResponse;
-      try {
-        aiResponse = JSON.parse(rawText);
-      } catch (err) {
-        console.error("JSON Parse Error:", rawText);
-        aiResponse = {
-          aiProbability: 50,
-          trustScore: 50,
-          status: "Inconclusive",
-          explanation: rawText
-        };
-      }
-
-      const trustScoreNum = Number(aiResponse.trustScore) || 50;
-      const aiProbNum = 100 - trustScoreNum;
-
-      const newScan = new Scan({
-        userId: req.user.id,
-        aiProbability: aiProbNum.toString() + "%",
-        trustScore: trustScoreNum.toString() + "%",
-        status: aiResponse.status,
-        explanation: aiResponse.explanation,
-        filename: url,
-        mediaType: "url",
-      });
-
-      if (userSettings.autoSave) { await newScan.save(); }
-
-      const newNotif = new Notification({
-        userId: req.user.id,
-        title: "URL Scan Complete",
-        message: `The URL '${url}' has been analyzed.`,
-        status: aiResponse.status
-      });
-      if (userSettings.notifications) { await newNotif.save(); }
-
-      res.json({
-        aiProbability: aiProbNum.toString() + "%",
-        trustScore: trustScoreNum.toString() + "%",
-        status: aiResponse.status,
-        explanation: aiResponse.explanation,
-      });
-
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ error: error.message || "URL Analysis failed" });
-    }
-  }
-);
-
-// ================================
 // ANALYZE BATCH API
 // ================================
 
@@ -1478,60 +1388,7 @@ app.post('/analyze-document', authenticateToken, upload.single('document'), asyn
   }
 });
 
-// ================================
-// ANALYZE LIVE AUDIO (Mocked for Deepfake Check)
-// ================================
-app.post("/analyze-live-audio", authenticateToken, async (req, res) => {
-  try {
-    const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
-    const deepScanInstruction = userSettings.deepScan ? "(DEEP SCAN MODE ENABLED: Analyze at a rigorous forensic level. Provide a highly detailed and technical explanation of any anomalies found.) " : "";
-    const prompt = deepScanInstruction + `
-You are an expert audio forensics AI. A user just recorded a 5-second ambient audio clip in a live setting.
-Generate a realistic JSON report analyzing this audio for deepfake synthesis artifacts, background noise consistency, and vocal tract modeling anomalies.
-Return ONLY a raw JSON object without markdown formatting.
-Format:
-{
-  "aiProbability": "<number between 0 and 100>",
-  "trustScore": "<number between 0 and 100, where trustScore = 100 - aiProbability>",
-  "status": "<exactly 'Authentic' or 'AI Generated'>",
-  "explanation": "<1-2 sentence explanation of the audio artifacts found or absence thereof>"
-}
-    `;
 
-    const result = await model.generateContent(prompt);
-    let rawText = result.response.text().replace(/```json/gi, "").replace(/```/g, "").trim();
-    const aiData = JSON.parse(rawText);
-
-    const trustScoreNum = Number(aiData.trustScore) || 50;
-    const aiProbNum = Number(aiData.aiProbability) || (100 - trustScoreNum);
-
-    const scanRecord = new Scan({
-      userId: req.user.id,
-      aiProbability: aiProbNum.toString() + "%",
-      trustScore: trustScoreNum.toString() + "%",
-      status: aiData.status,
-      explanation: aiData.explanation,
-      filename: "Live_Audio_Recording",
-      mediaType: "audio",
-    });
-
-    await scanRecord.save();
-
-    res.json({
-      aiProbability: aiProbNum.toString() + "%",
-      trustScore: trustScoreNum.toString() + "%",
-      status: aiData.status,
-      explanation: aiData.explanation,
-    });
-  } catch (error) {
-    console.error("Live Audio Scan Error:", error);
-    res.status(500).json({ error: "Failed to analyze live audio." });
-  }
-});
-
-// ================================
 // ANALYZE URL (Scrape + Gemini)
 // ================================
 app.post("/analyze-url", authenticateToken, async (req, res) => {
@@ -1745,7 +1602,12 @@ Return ONLY a raw JSON object.
     });
     if (userSettings.notifications) { await newNotif.save(); }
 
-    res.json(aiResponse);
+    res.json({
+      aiProbability: aiProbNum.toString() + "%",
+      trustScore: trustScoreNum.toString() + "%",
+      status: aiResponse.status,
+      explanation: aiResponse.explanation,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to analyze live audio" });
@@ -1754,6 +1616,8 @@ Return ONLY a raw JSON object.
 
 app.get('/quiz', authenticateToken, async (req, res) => {
   try {
+    const fullUser = await User.findById(req.user.id);
+    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
     const deepScanInstruction = userSettings.deepScan ? "(DEEP SCAN MODE ENABLED: Analyze at a rigorous forensic level. Provide a highly detailed and technical explanation of any anomalies found.) " : "";
     const prompt = deepScanInstruction + `
@@ -1776,6 +1640,8 @@ Each object must have:
 
 app.get('/news', authenticateToken, async (req, res) => {
   try {
+    const fullUser = await User.findById(req.user.id);
+    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
     const deepScanInstruction = userSettings.deepScan ? "(DEEP SCAN MODE ENABLED: Analyze at a rigorous forensic level. Provide a highly detailed and technical explanation of any anomalies found.) " : "";
     const prompt = deepScanInstruction + `
@@ -1797,6 +1663,8 @@ Each object must have:
 
 app.get('/learning', authenticateToken, async (req, res) => {
   try {
+    const fullUser = await User.findById(req.user.id);
+    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
     const deepScanInstruction = userSettings.deepScan ? "(DEEP SCAN MODE ENABLED: Analyze at a rigorous forensic level. Provide a highly detailed and technical explanation of any anomalies found.) " : "";
     const prompt = deepScanInstruction + `
