@@ -347,6 +347,16 @@ app.post('/auth/login', async (req, res) => {
       { expiresIn: '30d' }
     );
 
+    const deviceName = req.headers['user-agent']?.substring(0, 30) || 'Unknown Device';
+    user.activeSessions.push({
+      deviceId: 'dev_' + Date.now(),
+      deviceName: deviceName,
+      location: 'Unknown Location',
+      lastActive: new Date(),
+      token: token
+    });
+    await user.save();
+
     // Send Admin Notification
     const adminMailOptions = {
       from: '"TruthPulse App" <no-reply@truthpulse.com>',
@@ -402,6 +412,16 @@ app.post('/auth/verify-email', async (req, res) => {
       JWT_SECRET,
       { expiresIn: '30d' }
     );
+
+    const deviceName = req.headers['user-agent']?.substring(0, 30) || 'Unknown Device';
+    user.activeSessions.push({
+      deviceId: 'dev_' + Date.now(),
+      deviceName: deviceName,
+      location: 'Unknown Location',
+      lastActive: new Date(),
+      token: token
+    });
+    await user.save();
 
     res.json({
       message: 'Email verified successfully',
