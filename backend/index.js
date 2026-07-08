@@ -772,6 +772,9 @@ app.post(
         });
 
       // PROCESS MEDIA
+      if (!req.file) {
+        return res.status(400).json({ error: 'No media file provided in the request.' });
+      }
       let fileMimeType = req.file.mimetype;
       if (fileMimeType === 'application/octet-stream' || !fileMimeType) {
         const ext = (req.file.originalname || '').split('.').pop().toLowerCase();
@@ -961,11 +964,9 @@ The JSON must have the following exact structure:
       }
 
       res.status(500).json({
-
-        error:
-          "AI Analysis failed",
-
+        error: error.message || "AI Analysis failed",
       });
+
     }
   }
 );
@@ -1152,7 +1153,7 @@ URL to analyze:
 
     } catch (error) {
       console.log(error);
-      res.status(500).json({ error: "URL Analysis failed" });
+      res.status(500).json({ error: error.message || "URL Analysis failed" });
     }
   }
 );
