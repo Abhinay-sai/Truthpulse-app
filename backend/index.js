@@ -4,9 +4,16 @@ const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'truthpulse_secret_key_2026';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error("FATAL ERROR: JWT_SECRET is not defined in .env!");
+  process.exit(1);
+}
 
 const express = require('express');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
 const multer = require('multer');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -26,7 +33,31 @@ const {
 
 const app = express();
 
-app.use(cors());
+app.use(helmet());
+app.use((req, res, next) => {
+  if (req.body) req.body = mongoSanitize.sanitize(req.body);
+  if (req.params) req.params = mongoSanitize.sanitize(req.params);
+  next();
+});
+
+const globalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 1000,
+  message: { error: 'Too many requests from this IP, please try again after 15 minutes' }
+});
+app.use(globalLimiter);
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: { error: 'Too many authentication attempts from this IP, please try again after 15 minutes' }
+});
+
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
@@ -230,7 +261,7 @@ const validatePassword = (password) => {
 // AUTH: REGISTER
 // ================================
 
-app.post('/auth/register', async (req, res) => {
+app.post('/auth/register', authLimiter, async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -301,7 +332,7 @@ app.post('/auth/register', async (req, res) => {
 // AUTH: LOGIN
 // ================================
 
-app.post('/auth/login', async (req, res) => {
+app.post('/auth/login', authLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -511,7 +542,7 @@ app.put('/auth/update', authenticateToken, async (req, res) => {
 // AUTH: FORGOT PASSWORD
 // ================================
 
-app.post('/auth/forgot-password', async (req, res) => {
+app.post('/auth/forgot-password', authLimiter, async (req, res) => {
   try {
     const { email } = req.body;
     if (!email) return res.status(400).json({ error: 'Email is required' });
