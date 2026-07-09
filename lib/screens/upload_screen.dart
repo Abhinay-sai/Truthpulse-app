@@ -36,7 +36,7 @@ class _UploadScreenState extends State<UploadScreen> {
       final response = await http.get(
         Uri.parse('${AuthService.baseUrl}/history'),
         headers: {'Authorization': 'Bearer $token'},
-      );
+      ).timeout(const Duration(seconds: 15));
       
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body) as List<dynamic>;
@@ -46,6 +46,8 @@ class _UploadScreenState extends State<UploadScreen> {
             _isLoadingHistory = false;
           });
         }
+      } else {
+        throw Exception("Failed to load history. Status: ${response.statusCode}");
       }
     } catch (e) {
       if (mounted) {
