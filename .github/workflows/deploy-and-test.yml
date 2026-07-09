@@ -1,0 +1,109 @@
+name: Deploy and Test
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Web Application
+        # We inject the base href as the repository name so GitHub pages routes correctly
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'build/web'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  e2e_tests:
+    needs: build_and_deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install Google Chrome (for Selenium)
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+          
+      - name: Install E2E Dependencies
+        working-directory: ./e2e
+        run: npm install
+
+      - name: Wait for Deployment to be Live
+        # Small sleep to ensure GitHub Pages edge cache has updated
+        run: |
+          echo "Testing against URL: ${{ needs.build_and_deploy.outputs.page_url }}"
+          sleep 15
+          
+      - name: Run E2E Tests
+        working-directory: ./e2e
+        env:
+          BASE_URL: ${{ needs.build_and_deploy.outputs.page_url }}
+        run: npm test
+
+      - name: Upload Test Results Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: E2E-Test-Results
+          path: e2e/Test Results/
+          
+      - name: Publish Test Summary to GitHub Actions
+        if: always()
+        run: |
+          if [ -f "e2e/Test Results/summary.md" ]; then
+            cat "e2e/Test Results/summary.md" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Test summary markdown not found." >> $GITHUB_STEP_SUMMARY
+          fi
