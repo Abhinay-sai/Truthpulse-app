@@ -4,7 +4,7 @@
   "description": "E2E automated testing for TruthPulse",
   "main": "tests/e2e.test.js",
   "scripts": {
-    "test": "mocha tests/**/*.test.js --timeout 30000 --reporter mochawesome --reporter-options reportDir=\"Test Results\",reportFilename=\"execution-report\""
+    "test": "mocha tests/**/*.test.js --timeout 30000 --reporter mochawesome --reporter-options reportDir=\"Test Results/HTML\",reportFilename=\"execution-report\",json=false"
   },
   "dependencies": {
     "exceljs": "^4.4.0",

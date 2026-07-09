@@ -35,7 +35,7 @@ class BasePage {
 
     async takeScreenshot(filename) {
         const image = await this.driver.takeScreenshot();
-        const dir = path.join(__dirname, '..', 'Test Results', 'screenshots');
+        const dir = path.join(__dirname, '..', 'Test Results', 'Screenshots');
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }

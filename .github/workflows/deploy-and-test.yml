@@ -80,11 +80,27 @@ jobs:
         working-directory: ./e2e
         run: npm install
 
-      - name: Wait for Deployment to be Live
-        # Small sleep to ensure GitHub Pages edge cache has updated
+      - name: Verify Deployment is Live
         run: |
-          echo "Testing against URL: ${{ needs.build_and_deploy.outputs.page_url }}"
-          sleep 15
+          URL="${{ needs.build_and_deploy.outputs.page_url }}"
+          echo "Testing against URL: $URL"
+          MAX_RETRIES=12
+          RETRY_COUNT=0
+          until [ $RETRY_COUNT -ge $MAX_RETRIES ]
+          do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            if [ "$STATUS" -eq 200 ]; then
+              echo "Deployment is live (HTTP 200)."
+              break
+            fi
+            echo "Waiting for deployment... (Status: $STATUS)"
+            sleep 10
+            RETRY_COUNT=$((RETRY_COUNT+1))
+          done
+          if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
+            echo "Deployment did not return HTTP 200 within timeout."
+            exit 1
+          fi
           
       - name: Run E2E Tests
         working-directory: ./e2e
@@ -97,13 +113,18 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: E2E-Test-Results
-          path: e2e/Test Results/
+          path: |
+            e2e/Test Results/Excel/Automation_Test_Report.xlsx
+            e2e/Test Results/HTML/execution-report.html
+            e2e/Test Results/Screenshots/
+            e2e/Test Results/Logs/
+            e2e/Test Results/Summary/summary.md
           
       - name: Publish Test Summary to GitHub Actions
         if: always()
         run: |
-          if [ -f "e2e/Test Results/summary.md" ]; then
-            cat "e2e/Test Results/summary.md" >> $GITHUB_STEP_SUMMARY
+          if [ -f "e2e/Test Results/Summary/summary.md" ]; then
+            cat "e2e/Test Results/Summary/summary.md" >> $GITHUB_STEP_SUMMARY
           else
             echo "Test summary markdown not found." >> $GITHUB_STEP_SUMMARY
           fi

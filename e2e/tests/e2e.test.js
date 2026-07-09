@@ -11,11 +11,13 @@ describe('TruthPulse E2E Tests', function() {
     let homePage;
 
     before(async function() {
+        reporter.log('Starting E2E Test Suite Execution');
         driver = await buildDriver();
         homePage = new HomePage(driver);
     });
 
     after(async function() {
+        reporter.log('Test Suite Execution Finished. Generating Reports...');
         if (driver) {
             await driver.quit();
         }
@@ -36,11 +38,13 @@ describe('TruthPulse E2E Tests', function() {
     });
 
     it('should load the application successfully', async function() {
+        reporter.log(`Navigating to ${BASE_URL}`);
         await homePage.navigate(BASE_URL);
         // Wait for page to load
         // Sometimes Flutter title is empty, or takes time to set
         await driver.sleep(5000); 
         const title = await driver.getTitle();
+        reporter.log(`Page title retrieved: ${title}`);
         // Allow title to be anything, just making sure page loaded
         assert.ok(title !== undefined, 'Page title should be defined');
     });
