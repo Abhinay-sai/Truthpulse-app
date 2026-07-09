@@ -14,6 +14,8 @@ permissions:
 jobs:
   security-scan:
     runs-on: ubuntu-latest
+    env:
+      TECH: Unknown
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
