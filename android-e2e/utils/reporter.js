@@ -60,22 +60,22 @@ class Reporter {
         // Ensure username and repo name are provided or mocked
         const repoFull = process.env.GITHUB_REPOSITORY || 'username/repo';
         const [owner, repo] = repoFull.split('/');
-        const reportUrl = \`https://\${owner}.github.io/\${repo}/reports/latest/execution-report.html\`;
+        const reportUrl = `https://${owner}.github.io/${repo}/reports/latest/execution-report.html`;
 
-        const summary = \`
+        const summary = `
 # Android Appium Test Summary
 
-Build Number: \${buildNumber}
-Execution Date: \${date}
+Build Number: ${buildNumber}
+Execution Date: ${date}
 
-Total Tests: \${total}
-Passed: \${this.passed}
-Failed: \${this.failed}
-Pass Rate: \${passPercentage}%
+Total Tests: ${total}
+Passed: ${this.passed}
+Failed: ${this.failed}
+Pass Rate: ${passPercentage}%
 
 Report URL:
-\${reportUrl}
-\`;
+${reportUrl}
+`;
         fs.writeFileSync(path.join(summaryDir, 'summary.md'), summary.trim() + '\\n');
     }
 }
