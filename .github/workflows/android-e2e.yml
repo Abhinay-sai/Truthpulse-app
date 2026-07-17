@@ -1,105 +1,85 @@
-name: Android Appium E2E
+name: Enterprise Android Appium E2E CI/CD
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *' # Run nightly
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  android-e2e:
-    runs-on: macos-13
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  build-and-test:
+    runs-on: macos-latest
+    timeout-minutes: 60
 
-      - name: Setup Java
+    steps:
+      - name: Stage 1 - Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Stage 2 - Setup Java
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Setup Flutter
+      - name: Stage 3 - Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          
+      - name: Stage 4 - Install Node Dependencies
+        working-directory: ./automation
+        run: npm ci || npm install
 
-      - name: Install Flutter Dependencies
-        run: flutter pub get
-
-      - name: Build Android APK
-        run: flutter build apk --debug
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install Appium & E2E Dependencies
-        working-directory: ./android-e2e
+      - name: Stage 5 - Build Android APK
+        run: |
+          flutter pub get
+          flutter build apk --debug
+          
+      - name: Stage 6 - Install Appium
         run: |
           npm install -g appium
           appium driver install uiautomator2
-          npm install
 
-      - name: Run Appium Tests on Emulator
+      - name: Stage 7 - 17 - Emulator, Appium, and Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 31
-          target: default
+          api-level: 33
+          target: google_apis
           arch: x86_64
-          profile: Nexus 6
+          profile: pixel_6
           script: |
-            # Start appium in background
+            echo "Starting Appium Server..."
             appium &
-            sleep 15
-            cd android-e2e
+            sleep 10
+            echo "Executing Test Suite..."
+            cd automation
+            node data/generate_tests.js
             npm test
+            node utils/summary.js > $GITHUB_STEP_SUMMARY
 
-      - name: Upload Test Results Artifacts
+      - name: Stage 18 - Upload Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Appium-Test-Results
-          path: |
-            android-e2e/Test Results/Excel/Automation_Test_Report.xlsx
-            android-e2e/Test Results/HTML/execution-report.html
-            android-e2e/Test Results/Screenshots/
-            android-e2e/Test Results/Logs/
-            android-e2e/Test Results/Summary/summary.md
-
-      - name: Publish Test Summary to GitHub Actions
-        if: always()
-        run: |
-          if [ -f "android-e2e/Test Results/Summary/summary.md" ]; then
-            cat "android-e2e/Test Results/Summary/summary.md" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "Test summary markdown not found." >> $GITHUB_STEP_SUMMARY
-          fi
-
-      - name: Prepare Reports for GitHub Pages
-        if: always()
-        run: |
-          mkdir -p gh-pages-deploy/reports/latest
-          mkdir -p gh-pages-deploy/reports/history/build-${{ github.run_number }}
+          name: E2E-Automation-Reports
+          path: automation/Test Results/
+          retention-days: 30
           
-          # Copy to latest
-          cp -r android-e2e/Test\ Results/HTML/* gh-pages-deploy/reports/latest/ || true
-          cp -r android-e2e/Test\ Results/Screenshots gh-pages-deploy/reports/latest/ || true
-          cp -r android-e2e/Test\ Results/Logs gh-pages-deploy/reports/latest/ || true
-          cp -r android-e2e/Test\ Results/Summary/* gh-pages-deploy/reports/latest/ || true
-          
-          # Copy to history
-          cp -r gh-pages-deploy/reports/latest/* gh-pages-deploy/reports/history/build-${{ github.run_number }}/ || true
-
-      - name: Deploy Reports to gh-pages branch
+      - name: Stage 19 - Deploy to GitHub Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./gh-pages-deploy
-          keep_files: true
+          publish_dir: ./automation/Test Results
+          destination_dir: reports/latest
+          keep_files: true # We would need a custom script to archive old runs, keeping it simple for GH pages action

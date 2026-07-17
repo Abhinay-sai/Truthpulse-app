@@ -56,4 +56,4 @@ process.once('SIGINT', () => {
 });
 
 // Render progress bar in terminal
-autocannon.track(instance, {renderProgressBar: true});
+autocannon.track(instance, {renderProgressBar: false});

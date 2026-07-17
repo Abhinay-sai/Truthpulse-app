@@ -1,0 +1,16 @@
+{
+  "name": "truthpulse-automation",
+  "version": "1.0.0",
+  "description": "Enterprise Appium Framework",
+  "main": "tests/e2e.test.js",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js --timeout 900000 --reporter mochawesome --reporter-options reportDir=\"Test Results/HTML\",reportFilename=\"execution-report\",json=false",
+    "pretest": "node data/generate_tests.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "webdriverio": "^8.34.0"
+  }
+}

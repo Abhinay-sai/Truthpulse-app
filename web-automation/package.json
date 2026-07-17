@@ -1,0 +1,15 @@
+{
+  "name": "truthpulse-web-automation",
+  "version": "1.0.0",
+  "description": "Live Selenium Testing Framework",
+  "main": "tests/e2e.test.js",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js --timeout 900000",
+    "pretest": "node data/generate_tests.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "mocha": "^10.2.0",
+    "selenium-webdriver": "^4.18.1"
+  }
+}
