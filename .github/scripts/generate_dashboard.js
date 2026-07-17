@@ -4,8 +4,8 @@ const fs = require('fs');
 const buildNum = process.env.GITHUB_RUN_NUMBER || '413';
 const branchName = process.env.GITHUB_REF_NAME || 'main';
 const commitSha = process.env.GITHUB_SHA ? process.env.GITHUB_SHA.substring(0, 7) : 'a1b2c3d';
-const triggeredBy = process.env.GITHUB_ACTOR || 'Naveen-Dubba';
-const repoName = process.env.GITHUB_REPOSITORY || 'Naveen-Dubba/pdd-testing';
+const triggeredBy = process.env.GITHUB_ACTOR || 'Abhinay-sai';
+const repoName = process.env.GITHUB_REPOSITORY || 'Abhinay-sai/Truthpulse-app';
 const executionDate = new Date().toISOString().replace('T', ' ').substring(0, 19) + 'Z';
 
 // ════════════════════════════════════════════
