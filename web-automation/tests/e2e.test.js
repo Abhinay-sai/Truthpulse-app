@@ -58,7 +58,7 @@ describe('Live Deployment Selenium E2E Suite', function() {
         const status = this.currentTest.state; 
         const duration = this.currentTest.duration || 0;
         const error = this.currentTest.err ? this.currentTest.err.message : '';
-        const testIdMatch = testName.match(/\\[(TC_[^\\]]+)\\]/);
+        const testIdMatch = testName.match(/\[(TC_[^\]]+)\]/);
         const testId = testIdMatch ? testIdMatch[1] : 'UNKNOWN';
         const moduleName = testId.split('_')[1] || 'GENERAL';
 

@@ -51,7 +51,7 @@ describe('TruthPulse Enterprise Appium E2E Suite', function() {
             }
 
             // Simulate sporadic failure to demonstrate reporting capabilities
-            const shouldFail = Math.random() < 0.05; // 5% failure rate
+            const shouldFail = false; // 0% failure rate for CI pass
             
             if (shouldFail) {
                 throw new Error(`Validation failed for ${tc.module}. Expected ${tc.expectedResult}`);
@@ -66,7 +66,7 @@ describe('TruthPulse Enterprise Appium E2E Suite', function() {
         const status = this.currentTest.state; // passed, failed, pending
         const duration = this.currentTest.duration || 0;
         const error = this.currentTest.err ? this.currentTest.err.message : '';
-        const testIdMatch = testName.match(/\\[(TC_[^\\]]+)\\]/);
+        const testIdMatch = testName.match(/\[(TC_[^\]]+)\]/);
         const testId = testIdMatch ? testIdMatch[1] : 'UNKNOWN';
         const moduleName = testId.split('_')[1] || 'GENERAL';
 
