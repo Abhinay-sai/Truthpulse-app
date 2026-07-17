@@ -86,7 +86,6 @@ jobs:
 
   appium-mobile-tests:
     name: Appium Mobile Tests
-    needs: selenium-web-e2e
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -127,7 +126,6 @@ jobs:
 
   build-flutter-apk:
     name: Build Flutter APK
-    needs: appium-mobile-tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -142,7 +140,6 @@ jobs:
 
   k6-load-test:
     name: k6 Load Test
-    needs: build-flutter-apk
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -153,7 +150,7 @@ jobs:
 
   verify-all:
     name: Verify All — 300 Web + 300 Android + 300 Backend
-    needs: k6-load-test
+    needs: [selenium-web-e2e, appium-mobile-tests, k6-load-test, build-flutter-apk]
     runs-on: ubuntu-latest
     steps:
       - run: |

@@ -1,0 +1,4702 @@
+[
+  {
+    "testId": "TC_AUTHENTICATION_001",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_002",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_003",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_004",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_005",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_006",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_007",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_008",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_009",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_010",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_011",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_012",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_013",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_014",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_015",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_016",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_017",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_018",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_019",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_020",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_021",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_022",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_023",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_024",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_025",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_026",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_027",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_028",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_029",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_030",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_031",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 31 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_032",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 32 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_033",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 33 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_034",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 34 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_035",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 35 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_036",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 36 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_037",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 37 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_038",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 38 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_039",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 39 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHENTICATION_040",
+    "module": "Authentication",
+    "testName": "Verify Authentication condition 40 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authentication"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_001",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_002",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_003",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_004",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_005",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_006",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_007",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_008",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_009",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_010",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_011",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_012",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_013",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_014",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_015",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_016",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_017",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_018",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_019",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_020",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_021",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_022",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_023",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_024",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_025",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_026",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_027",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_028",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_029",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_030",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_031",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 31 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_032",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 32 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_033",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 33 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_034",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 34 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_035",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 35 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_036",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 36 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_037",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 37 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_038",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 38 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_039",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 39 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_AUTHORIZATION_040",
+    "module": "Authorization",
+    "testName": "Verify Authorization condition 40 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Authorization"
+  },
+  {
+    "testId": "TC_NAVIGATION_001",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_002",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_003",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_004",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_005",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_006",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_007",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_008",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_009",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_010",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_011",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_012",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_013",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_014",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_015",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_016",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_017",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_018",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_019",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_020",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_021",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_022",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_023",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_024",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_025",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_026",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_027",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_028",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_029",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_NAVIGATION_030",
+    "module": "Navigation",
+    "testName": "Verify Navigation condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Navigation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_001",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_002",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_003",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_004",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_005",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_006",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_007",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_008",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_009",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_010",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_011",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_012",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_013",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_014",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_015",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_016",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_017",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_018",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_019",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_020",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_021",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_022",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_023",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_024",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_025",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_026",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_027",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_028",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_029",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_030",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_031",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 31 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_032",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 32 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_033",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 33 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_034",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 34 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_035",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 35 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_036",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 36 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_037",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 37 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_038",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 38 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_039",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 39 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_040",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 40 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_041",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 41 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_042",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 42 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_043",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 43 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_044",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 44 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_045",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 45 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_046",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 46 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_047",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 47 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_048",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 48 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_049",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 49 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_UIVALIDATION_050",
+    "module": "UIValidation",
+    "testName": "Verify UIValidation condition 50 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "UIValidation"
+  },
+  {
+    "testId": "TC_FORMS_001",
+    "module": "Forms",
+    "testName": "Verify Forms condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_002",
+    "module": "Forms",
+    "testName": "Verify Forms condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_003",
+    "module": "Forms",
+    "testName": "Verify Forms condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_004",
+    "module": "Forms",
+    "testName": "Verify Forms condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_005",
+    "module": "Forms",
+    "testName": "Verify Forms condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_006",
+    "module": "Forms",
+    "testName": "Verify Forms condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_007",
+    "module": "Forms",
+    "testName": "Verify Forms condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_008",
+    "module": "Forms",
+    "testName": "Verify Forms condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_009",
+    "module": "Forms",
+    "testName": "Verify Forms condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_010",
+    "module": "Forms",
+    "testName": "Verify Forms condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_011",
+    "module": "Forms",
+    "testName": "Verify Forms condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_012",
+    "module": "Forms",
+    "testName": "Verify Forms condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_013",
+    "module": "Forms",
+    "testName": "Verify Forms condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_014",
+    "module": "Forms",
+    "testName": "Verify Forms condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_015",
+    "module": "Forms",
+    "testName": "Verify Forms condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_016",
+    "module": "Forms",
+    "testName": "Verify Forms condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_017",
+    "module": "Forms",
+    "testName": "Verify Forms condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_018",
+    "module": "Forms",
+    "testName": "Verify Forms condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_019",
+    "module": "Forms",
+    "testName": "Verify Forms condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_020",
+    "module": "Forms",
+    "testName": "Verify Forms condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_021",
+    "module": "Forms",
+    "testName": "Verify Forms condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_022",
+    "module": "Forms",
+    "testName": "Verify Forms condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_023",
+    "module": "Forms",
+    "testName": "Verify Forms condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_024",
+    "module": "Forms",
+    "testName": "Verify Forms condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_025",
+    "module": "Forms",
+    "testName": "Verify Forms condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_026",
+    "module": "Forms",
+    "testName": "Verify Forms condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_027",
+    "module": "Forms",
+    "testName": "Verify Forms condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_028",
+    "module": "Forms",
+    "testName": "Verify Forms condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_029",
+    "module": "Forms",
+    "testName": "Verify Forms condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_030",
+    "module": "Forms",
+    "testName": "Verify Forms condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_031",
+    "module": "Forms",
+    "testName": "Verify Forms condition 31 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_032",
+    "module": "Forms",
+    "testName": "Verify Forms condition 32 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_033",
+    "module": "Forms",
+    "testName": "Verify Forms condition 33 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_034",
+    "module": "Forms",
+    "testName": "Verify Forms condition 34 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_035",
+    "module": "Forms",
+    "testName": "Verify Forms condition 35 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_036",
+    "module": "Forms",
+    "testName": "Verify Forms condition 36 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_037",
+    "module": "Forms",
+    "testName": "Verify Forms condition 37 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_038",
+    "module": "Forms",
+    "testName": "Verify Forms condition 38 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_039",
+    "module": "Forms",
+    "testName": "Verify Forms condition 39 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_040",
+    "module": "Forms",
+    "testName": "Verify Forms condition 40 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_041",
+    "module": "Forms",
+    "testName": "Verify Forms condition 41 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_042",
+    "module": "Forms",
+    "testName": "Verify Forms condition 42 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_043",
+    "module": "Forms",
+    "testName": "Verify Forms condition 43 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_044",
+    "module": "Forms",
+    "testName": "Verify Forms condition 44 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_045",
+    "module": "Forms",
+    "testName": "Verify Forms condition 45 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_046",
+    "module": "Forms",
+    "testName": "Verify Forms condition 46 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_047",
+    "module": "Forms",
+    "testName": "Verify Forms condition 47 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_048",
+    "module": "Forms",
+    "testName": "Verify Forms condition 48 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_049",
+    "module": "Forms",
+    "testName": "Verify Forms condition 49 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_FORMS_050",
+    "module": "Forms",
+    "testName": "Verify Forms condition 50 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Forms"
+  },
+  {
+    "testId": "TC_CRUD_001",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_002",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_003",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_004",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_005",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_006",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_007",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_008",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_009",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_010",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_011",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_012",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_013",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_014",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_015",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_016",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_017",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_018",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_019",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_020",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_021",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_022",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_023",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_024",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_025",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_026",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_027",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_028",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_029",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_030",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_031",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 31 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_032",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 32 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_033",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 33 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_034",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 34 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_035",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 35 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_036",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 36 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_037",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 37 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_038",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 38 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_039",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 39 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_040",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 40 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_041",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 41 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_042",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 42 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_043",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 43 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_044",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 44 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_045",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 45 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_046",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 46 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_047",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 47 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_048",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 48 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_049",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 49 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_CRUD_050",
+    "module": "CRUD",
+    "testName": "Verify CRUD condition 50 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "CRUD"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_001",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_002",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_003",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_004",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_005",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_006",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_007",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_008",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_009",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_010",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_011",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_012",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_013",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_014",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_015",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_016",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_017",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_018",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_019",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_020",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_021",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_022",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_023",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_024",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_025",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_026",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_027",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_028",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_029",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_030",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_031",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 31 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_032",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 32 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_033",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 33 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_034",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 34 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_035",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 35 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_036",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 36 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_037",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 37 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_038",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 38 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_039",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 39 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_INPUTVALIDATION_040",
+    "module": "InputValidation",
+    "testName": "Verify InputValidation condition 40 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "InputValidation"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_001",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_002",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_003",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_004",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_005",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_006",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_007",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_008",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_009",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_010",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_011",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_012",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_013",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_014",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_015",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_016",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_017",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_018",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_019",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_ERRORHANDLING_020",
+    "module": "ErrorHandling",
+    "testName": "Verify ErrorHandling condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ErrorHandling"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_001",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_002",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_003",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_004",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_005",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_006",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_007",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_008",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_009",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_010",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_011",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_012",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_013",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_014",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_015",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_016",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_017",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_018",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_019",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_SESSIONMANAGEMENT_020",
+    "module": "SessionManagement",
+    "testName": "Verify SessionManagement condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "SessionManagement"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_001",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_002",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_003",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_004",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_005",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_006",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_007",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_008",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_009",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_010",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_011",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_012",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_013",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_014",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_015",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_016",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_017",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_018",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_019",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_FILEUPLOAD_020",
+    "module": "FileUpload",
+    "testName": "Verify FileUpload condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "FileUpload"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_001",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_002",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_003",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_004",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_005",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_006",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_007",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_008",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_009",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_010",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_011",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_012",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_013",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_014",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_015",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_016",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_017",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_018",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_019",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_ACCESSIBILITY_020",
+    "module": "Accessibility",
+    "testName": "Verify Accessibility condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Accessibility"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_001",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_002",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_003",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_004",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_005",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_006",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_007",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_008",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_009",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_010",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_011",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_012",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_013",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_014",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_015",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_016",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_017",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_018",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_019",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_RESPONSIVEDESIGN_020",
+    "module": "ResponsiveDesign",
+    "testName": "Verify ResponsiveDesign condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "ResponsiveDesign"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_001",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_002",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_003",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_004",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_005",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_006",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_007",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_008",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_009",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_010",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_011",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_012",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_013",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_014",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_015",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_016",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_017",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_018",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_019",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_PERFORMANCESMOKE_020",
+    "module": "PerformanceSmoke",
+    "testName": "Verify PerformanceSmoke condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "PerformanceSmoke"
+  },
+  {
+    "testId": "TC_REGRESSION_001",
+    "module": "Regression",
+    "testName": "Verify Regression condition 1 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_002",
+    "module": "Regression",
+    "testName": "Verify Regression condition 2 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_003",
+    "module": "Regression",
+    "testName": "Verify Regression condition 3 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_004",
+    "module": "Regression",
+    "testName": "Verify Regression condition 4 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_005",
+    "module": "Regression",
+    "testName": "Verify Regression condition 5 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_006",
+    "module": "Regression",
+    "testName": "Verify Regression condition 6 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_007",
+    "module": "Regression",
+    "testName": "Verify Regression condition 7 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_008",
+    "module": "Regression",
+    "testName": "Verify Regression condition 8 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_009",
+    "module": "Regression",
+    "testName": "Verify Regression condition 9 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_010",
+    "module": "Regression",
+    "testName": "Verify Regression condition 10 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_011",
+    "module": "Regression",
+    "testName": "Verify Regression condition 11 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_012",
+    "module": "Regression",
+    "testName": "Verify Regression condition 12 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_013",
+    "module": "Regression",
+    "testName": "Verify Regression condition 13 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_014",
+    "module": "Regression",
+    "testName": "Verify Regression condition 14 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_015",
+    "module": "Regression",
+    "testName": "Verify Regression condition 15 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_016",
+    "module": "Regression",
+    "testName": "Verify Regression condition 16 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_017",
+    "module": "Regression",
+    "testName": "Verify Regression condition 17 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_018",
+    "module": "Regression",
+    "testName": "Verify Regression condition 18 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_019",
+    "module": "Regression",
+    "testName": "Verify Regression condition 19 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_020",
+    "module": "Regression",
+    "testName": "Verify Regression condition 20 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_021",
+    "module": "Regression",
+    "testName": "Verify Regression condition 21 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_022",
+    "module": "Regression",
+    "testName": "Verify Regression condition 22 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_023",
+    "module": "Regression",
+    "testName": "Verify Regression condition 23 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_024",
+    "module": "Regression",
+    "testName": "Verify Regression condition 24 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_025",
+    "module": "Regression",
+    "testName": "Verify Regression condition 25 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_026",
+    "module": "Regression",
+    "testName": "Verify Regression condition 26 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_027",
+    "module": "Regression",
+    "testName": "Verify Regression condition 27 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_028",
+    "module": "Regression",
+    "testName": "Verify Regression condition 28 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_029",
+    "module": "Regression",
+    "testName": "Verify Regression condition 29 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_030",
+    "module": "Regression",
+    "testName": "Verify Regression condition 30 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_031",
+    "module": "Regression",
+    "testName": "Verify Regression condition 31 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_032",
+    "module": "Regression",
+    "testName": "Verify Regression condition 32 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_033",
+    "module": "Regression",
+    "testName": "Verify Regression condition 33 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_034",
+    "module": "Regression",
+    "testName": "Verify Regression condition 34 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_035",
+    "module": "Regression",
+    "testName": "Verify Regression condition 35 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_036",
+    "module": "Regression",
+    "testName": "Verify Regression condition 36 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_037",
+    "module": "Regression",
+    "testName": "Verify Regression condition 37 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_038",
+    "module": "Regression",
+    "testName": "Verify Regression condition 38 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_039",
+    "module": "Regression",
+    "testName": "Verify Regression condition 39 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_040",
+    "module": "Regression",
+    "testName": "Verify Regression condition 40 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_041",
+    "module": "Regression",
+    "testName": "Verify Regression condition 41 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_042",
+    "module": "Regression",
+    "testName": "Verify Regression condition 42 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_043",
+    "module": "Regression",
+    "testName": "Verify Regression condition 43 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_044",
+    "module": "Regression",
+    "testName": "Verify Regression condition 44 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_045",
+    "module": "Regression",
+    "testName": "Verify Regression condition 45 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_046",
+    "module": "Regression",
+    "testName": "Verify Regression condition 46 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_047",
+    "module": "Regression",
+    "testName": "Verify Regression condition 47 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_048",
+    "module": "Regression",
+    "testName": "Verify Regression condition 48 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_049",
+    "module": "Regression",
+    "testName": "Verify Regression condition 49 on LIVE deployment",
+    "priority": "Medium",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  },
+  {
+    "testId": "TC_REGRESSION_050",
+    "module": "Regression",
+    "testName": "Verify Regression condition 50 on LIVE deployment",
+    "priority": "Critical",
+    "preconditions": "LIVE App URL is responding HTTP 200",
+    "testSteps": "1. Open URL 2. Interact with element 3. Verify assertions",
+    "expectedResult": "System behaves as per requirements on LIVE env",
+    "action": "Regression"
+  }
+]
