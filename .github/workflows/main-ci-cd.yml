@@ -116,25 +116,29 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install Selenium Dependencies
-        working-directory: ./web-automation
-        run: npm ci || npm install
+        working-directory: ./selenium-tests
+        run: npm install
 
       - name: Run Web Selenium E2E Tests
-        working-directory: ./web-automation
-        run: |
-          node data/generate_tests.js
-          npm test || true
-          node utils/summary.js > $GITHUB_STEP_SUMMARY || true
+        working-directory: ./selenium-tests
+        run: npm test || true
+
+      - name: Generate Local Summary
+        working-directory: ./selenium-tests
+        run: node generate_summary.js || true
 
       - name: Upload Web Test Reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Web-Test-Reports
-          path: web-automation/Test Results/
+          path: |
+            selenium-tests/reports/
+            selenium-tests/screenshots/
+            selenium-tests/*.xlsx
           retention-days: 14
 
   # -----------------------------------------------------
@@ -151,7 +155,12 @@ jobs:
       - name: Setup Node.js (for Appium)
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
       - name: Install and Run Appium Server
         run: |
@@ -160,19 +169,20 @@ jobs:
           sleep 5
 
       - name: Run App Tests
-        working-directory: ./automation
+        working-directory: ./appium-tests
         run: |
-          npm ci || npm install
-          node data/generate_tests.js || true
-          npm test || true
-          node utils/summary.js > $GITHUB_STEP_SUMMARY || true
+          pip install -r requirements.txt
+          python -m pytest tests/ -v --html=reports/report.html --self-contained-html || true
 
       - name: Upload App Test Reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: App-Test-Reports
-          path: automation/Test Results/
+          path: |
+            appium-tests/reports/
+            appium-tests/screenshots/
+            appium-tests/*.xlsx
           retention-days: 14
 
   # -----------------------------------------------------
