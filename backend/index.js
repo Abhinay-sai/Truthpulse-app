@@ -65,18 +65,15 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // MONGODB CONNECTION
 // ================================
 
-mongoose.connect(process.env.MONGO_URI)
-
-.then(() => {
-
-  console.log("MongoDB Connected");
-
+mongoose.connect(process.env.MONGO_URI, {
+  maxPoolSize: 500,
+  serverSelectionTimeoutMS: 5000
 })
-
+.then(() => {
+  console.log("MongoDB Connected (Optimized Pool: 500)");
+})
 .catch((err) => {
-
   console.log(err);
-
 });
 
 // ================================
