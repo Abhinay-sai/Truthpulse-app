@@ -67,10 +67,10 @@ class _SplashScreenState extends State<SplashScreen>
     _timer = Timer(const Duration(seconds: 3), () async {
       if (!mounted) return;
       
-      final loggedIn = await AuthService.isLoggedIn();
+      final user = await AuthService.getCurrentUser();
       if (!mounted) return;
 
-      if (loggedIn) {
+      if (user != null) {
         Navigator.pushReplacement(
           context,
           FigmaPageRoute(child: const DashboardScreen()),
