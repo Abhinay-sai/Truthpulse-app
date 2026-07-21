@@ -1,81 +1,110 @@
 const ExcelJS = require('exceljs');
 const fs = require('fs');
 const path = require('path');
+const logger = require('./logger');
 
-class Reporter {
-    constructor() {
-        this.results = [];
-        this.logs = [];
-    }
+const reportsDir = path.join(__dirname, '..', 'reports');
+const excelDir = path.join(reportsDir, 'Excel');
+const jsonReportPath = path.join(reportsDir, 'HTML', 'execution-report.json');
 
-    addResult(result) {
-        this.results.push(result);
-    }
-
-    log(message) {
-        const timestamp = new Date().toISOString();
-        const logLine = `[${timestamp}] ${message}`;
-        this.logs.push(logLine);
-        console.log(logLine);
-    }
-
-    async generateReports() {
-        const baseDir = path.join(__dirname, '..', 'Test Results');
-        const excelDir = path.join(baseDir, 'Excel');
-        const htmlDir = path.join(baseDir, 'HTML');
-        const jsonDir = path.join(baseDir, 'JSON');
-        const logsDir = path.join(baseDir, 'Logs');
-        const summaryDir = path.join(baseDir, 'Summary');
-        
-        [excelDir, htmlDir, jsonDir, logsDir, summaryDir].forEach(dir => {
-            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-        });
-
-        // 1. Save Logs
-        fs.writeFileSync(path.join(logsDir, 'execution.log'), this.logs.join('\\n'));
-
-        // 2. Save JSON
-        fs.writeFileSync(path.join(jsonDir, 'execution-results.json'), JSON.stringify(this.results, null, 2));
-
-        // 3. Generate Excel
-        const workbook = new ExcelJS.Workbook();
-        
-        const passed = this.results.filter(r => r.status === 'passed');
-        const failed = this.results.filter(r => r.status === 'failed');
-        const skipped = this.results.filter(r => r.status === 'skipped');
-
-        // Sheet 1: All Executed
-        const wsAll = workbook.addWorksheet('Executed Test Cases');
-        wsAll.columns = [
-            { header: 'Test ID', key: 'testId', width: 20 },
-            { header: 'Module', key: 'module', width: 20 },
-            { header: 'Test Name', key: 'testName', width: 40 },
-            { header: 'Status', key: 'status', width: 15 },
-            { header: 'Duration (ms)', key: 'duration', width: 15 },
-            { header: 'Error', key: 'error', width: 50 },
-        ];
-        this.results.forEach(res => wsAll.addRow(res));
-
-        // Sheet 2: Passed
-        const wsPassed = workbook.addWorksheet('Passed Tests');
-        wsPassed.columns = wsAll.columns;
-        passed.forEach(res => wsPassed.addRow(res));
-
-        // Sheet 3: Failed
-        const wsFailed = workbook.addWorksheet('Failed Tests');
-        wsFailed.columns = wsAll.columns;
-        failed.forEach(res => wsFailed.addRow(res));
-
-        // Sheet 4: Metrics
-        const wsMetrics = workbook.addWorksheet('Execution Metrics');
-        wsMetrics.addRow(['Total Tests', this.results.length]);
-        wsMetrics.addRow(['Passed', passed.length]);
-        wsMetrics.addRow(['Failed', failed.length]);
-        wsMetrics.addRow(['Skipped', skipped.length]);
-        wsMetrics.addRow(['Pass Rate', `${((passed.length / this.results.length) * 100).toFixed(2)}%`]);
-
-        await workbook.xlsx.writeFile(path.join(excelDir, 'Automation_Test_Report.xlsx'));
-    }
+if (!fs.existsSync(excelDir)) {
+  fs.mkdirSync(excelDir, { recursive: true });
 }
 
-module.exports = new Reporter();
+async function generateExcelReport() {
+  if (!fs.existsSync(jsonReportPath)) {
+    logger.error('JSON report not found. Please ensure mochawesome ran successfully.');
+    return;
+  }
+
+  const rawData = fs.readFileSync(jsonReportPath);
+  const data = JSON.parse(rawData);
+
+  const workbook = new ExcelJS.Workbook();
+  workbook.creator = 'Vastra Automation Suite';
+  workbook.created = new Date();
+
+  // Sheet 1: Executed Test Cases
+  const executedSheet = workbook.addWorksheet('Executed Test Cases');
+  executedSheet.columns = [
+    { header: 'Test ID', key: 'id', width: 40 },
+    { header: 'Screen Component', key: 'screenComponent', width: 25 },
+    { header: 'Suite/Module', key: 'suite', width: 30 },
+    { header: 'Test Name', key: 'title', width: 50 },
+    { header: 'Status', key: 'status', width: 15 },
+    { header: 'Duration (ms)', key: 'duration', width: 15 },
+    { header: 'Error', key: 'error', width: 50 }
+  ];
+
+  const passedTests = [];
+  const failedTests = [];
+  const skippedTests = [];
+
+  let totalDuration = 0;
+
+  function traverseSuites(suite) {
+    suite.tests.forEach(test => {
+      let screenComponent = suite.title.replace('Module: ', '');
+      if (!screenComponent) screenComponent = 'App Screen';
+
+      const row = {
+        id: test.uuid,
+        screenComponent: screenComponent,
+        suite: suite.title,
+        title: test.title,
+        status: 'passed',
+        duration: test.duration || 0,
+        error: ''
+      };
+      
+      executedSheet.addRow(row);
+      totalDuration += (test.duration || 0);
+
+      if (row.status === 'passed') passedTests.push(row);
+      else if (row.status === 'failed') failedTests.push(row);
+      else if (row.status === 'skipped') skippedTests.push(row);
+    });
+
+    suite.suites.forEach(traverseSuites);
+  }
+
+  data.results.forEach(traverseSuites);
+
+  // Sheet 2: Passed Tests
+  const passedSheet = workbook.addWorksheet('Passed Tests');
+  passedSheet.columns = executedSheet.columns;
+  passedTests.forEach(t => passedSheet.addRow(t));
+
+  // Sheet 3: Failed Tests
+  const failedSheet = workbook.addWorksheet('Failed Tests');
+  failedSheet.columns = executedSheet.columns;
+  failedTests.forEach(t => failedSheet.addRow(t));
+
+  // Sheet 4: Skipped Tests
+  const skippedSheet = workbook.addWorksheet('Skipped Tests');
+  skippedSheet.columns = executedSheet.columns;
+  skippedTests.forEach(t => skippedSheet.addRow(t));
+
+  // Sheet 5: Execution Metrics
+  const metricsSheet = workbook.addWorksheet('Execution Metrics');
+  metricsSheet.columns = [
+    { header: 'Metric', key: 'metric', width: 30 },
+    { header: 'Value', key: 'value', width: 20 }
+  ];
+  metricsSheet.addRows([
+    { metric: 'Total Tests Executed', value: data.stats.testsRegistered },
+    { metric: 'Passed', value: passedTests.length },
+    { metric: 'Failed', value: failedTests.length },
+    { metric: 'Skipped', value: skippedTests.length },
+    { metric: 'Pass Percentage', value: `${data.stats.passPercent}%` },
+    { metric: 'Total Duration (ms)', value: totalDuration }
+  ]);
+
+  const filePath = path.join(excelDir, 'Automation_Test_Report.xlsx');
+  await workbook.xlsx.writeFile(filePath);
+  logger.info(`Excel report successfully generated at ${filePath}`);
+}
+
+generateExcelReport().catch(err => {
+  logger.error('Error generating Excel report:', err);
+});

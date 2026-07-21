@@ -1,20 +1,33 @@
-const fs = require('fs');
-const path = require('path');
+const { By, until } = require('selenium-webdriver');
 
 class BasePage {
-    constructor(driver) {
-        this.driver = driver;
-    }
+  constructor(driver) {
+    this.driver = driver;
+  }
 
-    async takeScreenshot(filename) {
-        if (!this.driver) return;
-        const image = await this.driver.takeScreenshot();
-        const dir = path.join(__dirname, '..', 'Test Results', 'Screenshots');
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-        }
-        fs.writeFileSync(path.join(dir, `${filename}.png`), image, 'base64');
-    }
+  async navigateTo(url) {
+    await this.driver.get(url);
+  }
+
+  async waitForElement(locator, timeout = 10000) {
+    return await this.driver.wait(until.elementLocated(locator), timeout);
+  }
+
+  async click(locator) {
+    const el = await this.waitForElement(locator);
+    await el.click();
+  }
+
+  async type(locator, text) {
+    const el = await this.waitForElement(locator);
+    await el.clear();
+    await el.sendKeys(text);
+  }
+
+  async getText(locator) {
+    const el = await this.waitForElement(locator);
+    return await el.getText();
+  }
 }
 
 module.exports = BasePage;
