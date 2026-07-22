@@ -33,6 +33,14 @@ const {
 
 const app = express();
 
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    service: 'truthpulse-backend',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.use(helmet());
 app.use((req, res, next) => {
   if (req.body) req.body = mongoSanitize.sanitize(req.body);
