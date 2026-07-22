@@ -10,6 +10,9 @@ if (!JWT_SECRET) {
   process.exit(1);
 }
 
+const dns = require('dns');
+dns.setDefaultResultOrder('ipv4first');
+
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
