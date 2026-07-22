@@ -116,7 +116,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install Selenium Dependencies
         working-directory: ./selenium-e2e-tests
@@ -202,7 +202,7 @@ jobs:
       - name: Setup Node.js (for Appium)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install and Run Appium Server
         run: |
@@ -266,7 +266,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Generate Comprehensive Dashboard
         run: |
