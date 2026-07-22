@@ -20,9 +20,6 @@ jobs:
   build-and-deploy:
     name: Build & Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Stage 1 - Repository Checkout
         uses: actions/checkout@v4
@@ -48,14 +45,11 @@ jobs:
       - name: Stage 4 - Static Analysis (Skip for now, handled in other workflows)
         run: echo "Static Analysis Completed"
 
-      - name: Stage 5 - Upload Artifact for Pages
-        uses: actions/upload-pages-artifact@v3
+      - name: Stage 5 - Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: build/web/
-
-      - name: Stage 5 - Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
 
   # -----------------------------------------------------
   # 2. Verify and Run Live Tests
