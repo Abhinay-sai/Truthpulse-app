@@ -45,6 +45,10 @@ jobs:
       - name: Build Flutter Web (Release)
         run: flutter build web --release --base-href "/${{ github.event.repository.name }}/"
 
+      - name: Create Vercel Config
+        run: |
+          echo '{"buildCommand": "echo \"Already built\"", "outputDirectory": ".", "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]}' > build/web/vercel.json
+
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
