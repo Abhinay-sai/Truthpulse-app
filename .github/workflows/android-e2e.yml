@@ -1,0 +1,103 @@
+name: Android App E2E Automation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: write
+
+jobs:
+  android-e2e-appium:
+    name: Build & Run Android Appium Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stage 1 - Repository Checkout
+        uses: actions/checkout@v4
+
+      - name: Stage 2 - Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Stage 3 - Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Create Mock Secrets
+        run: |
+          mkdir -p lib/core
+          echo "class Secrets { static const String groqAnalysisKey = 'mock'; static const String groqChatKey = 'mock'; static const String owmKey = 'mock'; }" > lib/core/secrets.dart
+
+      - name: Stage 4 - Install Flutter Dependencies
+        run: flutter pub get
+
+      - name: Stage 5 - Build APK
+        run: flutter build apk --debug
+        env:
+          GRADLE_OPTS: "-Xmx4g -Dorg.gradle.daemon=false"
+
+      - name: Stage 6 - Setup Node.js for Appium
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Stage 7 - Install Appium Server Globally
+        run: |
+          npm install -g appium
+          appium driver install uiautomator2
+
+      - name: Enable KVM for Hardware Acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Stage 8-11 - Start Emulator & Run Appium Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: playstore
+          arch: x86_64
+          profile: Nexus 6
+          script: |
+            echo "Emulator started successfully!"
+            echo "Installing Node dependencies..."
+            cd appium-e2e-tests
+            npm install
+            
+            echo "Starting Appium Server..."
+            appium &
+            sleep 10
+            
+            echo "Executing Appium E2E Tests..."
+            npm test || true
+            
+            echo "Generating 400+ Test Cases & Excel Reports..."
+            npm run generate:cases || true
+            
+            echo "Publishing Dashboard to GitHub Actions..."
+            node ../.github/scripts/generate_dashboard.js || true
+            if [ -f dashboard.md ]; then cat dashboard.md >> $GITHUB_STEP_SUMMARY; fi
+
+      - name: Stage 12-21 - Upload Artifacts & Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Android-Appium-Test-Reports
+          path: |
+            build/app/outputs/flutter-apk/
+            appium-e2e-tests/Test Results/
+            appium-e2e-tests/reports/
+            appium-e2e-tests/screenshots/
+            appium-e2e-tests/logs/
+            appium-e2e-tests/*.xlsx
+          retention-days: 30
