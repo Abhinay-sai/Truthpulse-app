@@ -61,6 +61,27 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
+      - name: Create Test Script
+        run: |
+          cat << 'EOF' > run_tests.sh
+          echo "Emulator started successfully!"
+          echo "Installing Node dependencies..."
+          cd appium-e2e-tests
+          npm install
+          echo "Starting Appium Server..."
+          appium &
+          sleep 10
+          echo "Executing Appium E2E Tests..."
+          npm test || true
+          echo "Generating 400+ Test Cases & Excel Reports..."
+          npm run generate:cases || true
+          cd ..
+          echo "Publishing Dashboard to GitHub Actions..."
+          node .github/scripts/generate_dashboard.js || true
+          if [ -f dashboard.md ]; then cat dashboard.md >> $GITHUB_STEP_SUMMARY; fi
+          EOF
+          chmod +x run_tests.sh
+
       - name: Stage 8-11 - Start Emulator & Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -68,25 +89,7 @@ jobs:
           target: playstore
           arch: x86_64
           profile: Nexus 6
-          script: |
-            echo "Emulator started successfully!"
-            echo "Installing Node dependencies..."
-            cd appium-e2e-tests
-            npm install
-            
-            echo "Starting Appium Server..."
-            appium &
-            sleep 10
-            
-            echo "Executing Appium E2E Tests..."
-            npm test || true
-            
-            echo "Generating 400+ Test Cases & Excel Reports..."
-            npm run generate:cases || true
-            
-            echo "Publishing Dashboard to GitHub Actions..."
-            node ../.github/scripts/generate_dashboard.js || true
-            if [ -f dashboard.md ]; then cat dashboard.md >> $GITHUB_STEP_SUMMARY; fi
+          script: ./run_tests.sh
 
       - name: Stage 12-21 - Upload Artifacts & Reports
         uses: actions/upload-artifact@v4
