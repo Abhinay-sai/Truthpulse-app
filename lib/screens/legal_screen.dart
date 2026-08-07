@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'two_factor_auth_screen.dart';
 import 'active_sessions_screen.dart';
 import 'data_export_screen.dart';
 
@@ -23,7 +22,6 @@ class LegalScreen extends StatelessWidget {
           children: [
             const Text("Advanced Security", style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
-            _buildSecurityTile(context, "Two-Factor Authentication", Icons.security, Colors.purpleAccent, const TwoFactorAuthScreen()),
             _buildSecurityTile(context, "Active Sessions", Icons.devices, Colors.greenAccent, const ActiveSessionsScreen()),
             _buildSecurityTile(context, "Export Account Data", Icons.archive, Colors.blueAccent, const DataExportScreen()),
             
