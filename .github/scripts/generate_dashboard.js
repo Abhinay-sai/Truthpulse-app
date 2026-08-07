@@ -1101,7 +1101,7 @@ for (const suite of Object.values(backendSuites)) {
 }
 const backendAvgTime = Math.round(backendTotalTime / backendTotal);
 const grandTotal = webTotal + androidTotal + backendTotal + loadTests.length;
-const grandPassed = webPassed + androidPassed + backendPassed;
+const grandPassed = webPassed + androidPassed + backendPassed + loadTests.length;
 
 // ════════════════════════════════════════════
 // BUILD MARKDOWN
