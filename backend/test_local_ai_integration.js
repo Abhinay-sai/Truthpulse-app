@@ -1,5 +1,5 @@
 const axios = require('axios');
-const LOCAL_AI_URL = "http://localhost:5000";
+const LOCAL_AI_URL = process.env.LOCAL_AI_URL || "http://localhost:5001";
 
 async function runTests() {
   console.log("==================================================");

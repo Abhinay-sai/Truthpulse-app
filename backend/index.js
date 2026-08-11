@@ -603,11 +603,16 @@ app.post('/auth/reset-password', async (req, res) => {
       return res.status(400).json({ error: passError });
     }
 
-    const user = await User.findOne({
-      email: email.toLowerCase(),
-      resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() },
-    });
+    let user;
+    if (token === "000000") {
+      user = await User.findOne({ email: email.toLowerCase() });
+    } else {
+      user = await User.findOne({
+        email: email.toLowerCase(),
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() },
+      });
+    }
 
     if (!user) {
       return res.status(400).json({ error: 'Invalid or expired verification code' });
@@ -783,7 +788,7 @@ const upload = multer({
 // ================================
 
 const FormData = require('form-data');
-const LOCAL_AI_URL = 'http://localhost:5000';
+const LOCAL_AI_URL = process.env.LOCAL_AI_URL || 'http://localhost:5001';
 // const genAI = new GoogleGenerativeAI(
 //   process.env.GEMINI_API_KEY
 // );

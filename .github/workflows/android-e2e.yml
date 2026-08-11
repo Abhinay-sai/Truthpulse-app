@@ -70,6 +70,7 @@ jobs:
           npm install
           echo "Starting Appium Server..."
           appium &
+          APPIUM_PID=$!
           sleep 10
           echo "Executing Appium E2E Tests..."
           npm test || true
@@ -79,6 +80,8 @@ jobs:
           echo "Publishing Dashboard to GitHub Actions..."
           node .github/scripts/generate_dashboard.js || true
           if [ -f dashboard.md ]; then cat dashboard.md >> $GITHUB_STEP_SUMMARY; fi
+          echo "Tests complete, stopping Appium server..."
+          kill $APPIUM_PID || true
           EOF
           chmod +x run_tests.sh
 
