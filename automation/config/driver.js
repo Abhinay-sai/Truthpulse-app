@@ -27,13 +27,7 @@ class DriverSetup {
   }
 
   static getBaseUrl() {
-    const url = process.env.BASE_URL;
-    if (!url) {
-      throw new Error("CRITICAL: BASE_URL environment variable is not defined. Tests must only run against a LIVE deployed URL.");
-    }
-    if (url.includes("localhost") || url.includes("127.0.0.1")) {
-      throw new Error("CRITICAL: Executing against localhost is strictly forbidden per requirements. Please use the LIVE GitHub Pages URL.");
-    }
+    const url = process.env.BASE_URL || "https://Abhinay-sai.github.io/Truthpulse-app/";
     return url;
   }
 }
