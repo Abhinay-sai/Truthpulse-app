@@ -1,0 +1,1 @@
+{"buildCommand": "echo \"Already built\"", "outputDirectory": ".", "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]}
