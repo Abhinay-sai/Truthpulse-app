@@ -1,16 +1,30 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { GlassCard } from '../components/GlassCard';
 import { GradientButton } from '../components/GradientButton';
 import { BottomNav } from '../components/BottomNav';
 import { useNavigate } from 'react-router';
-import { Upload, Image, Video, FileCheck } from 'lucide-react';
+import { Upload, Image, Video, FileCheck, CheckCircle2 } from 'lucide-react';
 
 export function UploadScreen() {
   const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [dragActive, setDragActive] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileSelect = (file: File) => {
+    setSelectedFile(file);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFileSelect(e.dataTransfer.files[0]);
+    }
+  };
 
   const handleAnalyze = () => {
-    navigate('/analyzing');
+    navigate('/analyzing', { state: { fileName: selectedFile?.name || 'sample_media.png' } });
   };
 
   const recentUploads = [
@@ -23,30 +37,48 @@ export function UploadScreen() {
       <div className="p-6 space-y-6">
         <div>
           <h1 className="text-3xl text-white mb-1">Upload Media</h1>
-          <p className="text-gray-400">Upload image or video to analyze</p>
+          <p className="text-gray-400">Upload image, audio, or video to analyze</p>
         </div>
 
+        <input
+          type="file"
+          ref={fileInputRef}
+          className="hidden"
+          accept="image/*,video/*,audio/*,.pdf,.docx,.txt"
+          onChange={(e) => {
+            if (e.target.files && e.target.files[0]) {
+              handleFileSelect(e.target.files[0]);
+            }
+          }}
+        />
+
         <GlassCard
-          className={`p-8 border-2 border-dashed transition-all ${
+          className={`p-8 border-2 border-dashed transition-all cursor-pointer ${
             dragActive ? 'border-[var(--neon-purple)] bg-[var(--neon-purple)]/5' : 'border-[var(--glass-border)]'
           }`}
           onDragEnter={() => setDragActive(true)}
           onDragLeave={() => setDragActive(false)}
           onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => {
-            e.preventDefault();
-            setDragActive(false);
-          }}
+          onDrop={handleDrop}
+          onClick={() => fileInputRef.current?.click()}
         >
           <div className="flex flex-col items-center text-center">
             <div className="relative mb-4">
               <div className="absolute inset-0 bg-gradient-to-r from-[var(--neon-purple)] to-[var(--neon-blue)] blur-2xl opacity-30" />
-              <Upload size={60} className="text-[var(--neon-purple)] relative z-10" />
+              {selectedFile ? (
+                <CheckCircle2 size={60} className="text-green-400 relative z-10" />
+              ) : (
+                <Upload size={60} className="text-[var(--neon-purple)] relative z-10" />
+              )}
             </div>
-            <h3 className="text-xl text-white mb-2">Drag & Drop</h3>
-            <p className="text-gray-400 text-sm mb-6">or click to browse files</p>
-            <GradientButton onClick={() => {}}>
-              Browse Files
+            <h3 className="text-xl text-white mb-2">
+              {selectedFile ? selectedFile.name : 'Drag & Drop'}
+            </h3>
+            <p className="text-gray-400 text-sm mb-6">
+              {selectedFile ? `${(selectedFile.size / (1024 * 1024)).toFixed(2)} MB • Ready for scan` : 'or click to browse files'}
+            </p>
+            <GradientButton onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }}>
+              {selectedFile ? 'Change File' : 'Browse Files'}
             </GradientButton>
           </div>
         </GlassCard>
