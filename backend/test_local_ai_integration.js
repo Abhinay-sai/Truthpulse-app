@@ -17,7 +17,7 @@ async function runTests() {
     console.log("[PASS] /analyze-text (Fake Claim Test)");
     console.log("   -> Result:", JSON.stringify(res.data, null, 2));
     if (res.data.aiProbability && res.data.trustScore && res.data.status && res.data.explanation) passed++;
-    else { console.log("   [ERROR] Missing expected Gemini JSON fields!"); failed++; }
+    else { console.log("   [ERROR] Missing expected TruthPulse JSON fields!"); failed++; }
   } catch (err) {
     console.log("[FAIL] /analyze-text:", err.message); failed++;
   }

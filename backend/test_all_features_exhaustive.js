@@ -10,7 +10,7 @@ let createdPostId = null;
 
 async function runExhaustiveTestSuite() {
   console.log("==================================================================");
-  console.log(" EXHAUSTIVE FEATURE TEST SUITE - TRUTHPULSE APP (NO GEMINI KEY) ");
+  console.log(" EXHAUSTIVE FEATURE TEST SUITE - TRUTHPULSE APP ");
   console.log(" Targeting Express Backend:", BASE_URL);
   console.log("==================================================================\n");
 

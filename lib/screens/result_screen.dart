@@ -320,7 +320,7 @@ $explanation
 
                     detailRow(
                       "Detection Model",
-                      "Gemini Vision AI",
+                      "TruthPulse AI Model",
                     ),
 
                     const SizedBox(height: 18),

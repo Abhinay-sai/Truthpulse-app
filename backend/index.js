@@ -266,6 +266,18 @@ const validatePassword = (password) => {
 };
 
 // ================================
+// SCORE PARSER HELPER
+// ================================
+
+const parseScore = (val, defaultVal = 50) => {
+  if (val === undefined || val === null) return defaultVal;
+  if (typeof val === 'number') return isNaN(val) ? defaultVal : val;
+  const cleaned = String(val).replace(/%/g, '').trim();
+  const parsed = parseFloat(cleaned);
+  return isNaN(parsed) ? defaultVal : parsed;
+};
+
+// ================================
 // AUTH: REGISTER
 // ================================
 
@@ -806,7 +818,7 @@ app.post(
 
     try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
       const deepScan = req.body.deepScan === 'true';
       // LOAD LOCAL AI MODEL (Replaces Google Gemini)
       if (!req.file) {
@@ -854,9 +866,9 @@ app.post(
 
       // AI SCORES
 
-      const trustScore = Number(aiResponse.trustScore) || 50;
-      const aiProbability = 100 - trustScore;
-      const status = aiResponse.status;
+      const trustScore = parseScore(aiResponse.trustScore, 50);
+      const aiProbability = parseScore(aiResponse.aiProbability, 100 - trustScore);
+      const status = aiResponse.status || (trustScore >= 50 ? "Authentic" : "AI Generated");
       const explanationText = aiResponse.explanation;
 
       // ================================
@@ -940,7 +952,7 @@ app.post(
   async (req, res) => {
     try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
       const { text } = req.body;
       if (!text) {
         return res.status(400).json({ error: "Text is required" });
@@ -960,9 +972,9 @@ app.post(
         };
       }
 
-      const trustScore = Number(aiResponse.trustScore) || 50;
-      const aiProbability = 100 - trustScore;
-      const status = aiResponse.status;
+      const trustScore = parseScore(aiResponse.trustScore, 50);
+      const aiProbability = parseScore(aiResponse.aiProbability, 100 - trustScore);
+      const status = aiResponse.status || (trustScore >= 50 ? "Authentic" : "AI Generated");
       const explanationText = aiResponse.explanation;
 
       const newScan = new Scan({
@@ -1010,7 +1022,7 @@ app.post(
   async (req, res) => {
     try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
       if (!req.files || req.files.length === 0) {
         return res.status(400).json({ error: "No files uploaded" });
       }
@@ -1026,8 +1038,8 @@ app.post(
           const localRes = await axios.post(`${LOCAL_AI_URL}/analyze`, form, { headers: form.getHeaders() });
           aiResponse = localRes.data;
           
-          const trustScoreNum = Number(aiResponse.trustScore) || 50;
-          const aiProbNum = 100 - trustScoreNum;
+          const trustScoreNum = parseScore(aiResponse.trustScore, 50);
+          const aiProbNum = parseScore(aiResponse.aiProbability, 100 - trustScoreNum);
           
           const newScan = new Scan({
             userId: req.user.id,
@@ -1145,7 +1157,7 @@ app.put('/notifications/read-all', authenticateToken, async (req, res) => {
 app.post('/analyze-social', authenticateToken, async (req, res) => {
   try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
     const { handle, deepScan } = req.body;
     if (!handle) return res.status(400).json({ error: "Missing handle" });
 
@@ -1161,8 +1173,8 @@ app.post('/analyze-social', authenticateToken, async (req, res) => {
       };
     }
 
-    const trustScoreNum = Number(aiData.trustScore) || 50;
-    const aiProbNum = 100 - trustScoreNum;
+    const trustScoreNum = parseScore(aiData.trustScore, 50);
+    const aiProbNum = parseScore(aiData.aiProbability, 100 - trustScoreNum);
 
     const scanRecord = new Scan({
       userId: req.user.id,
@@ -1194,7 +1206,7 @@ app.post('/analyze-social', authenticateToken, async (req, res) => {
 app.post('/analyze-document', authenticateToken, upload.single('document'), async (req, res) => {
   try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
     if (!req.file) return res.status(400).json({ error: "No document uploaded" });
     
     let docText = "";
@@ -1224,8 +1236,8 @@ app.post('/analyze-document', authenticateToken, upload.single('document'), asyn
       };
     }
 
-    const trustScoreNum = Number(aiData.trustScore) || 50;
-    const aiProbNum = 100 - trustScoreNum;
+    const trustScoreNum = parseScore(aiData.trustScore, 50);
+    const aiProbNum = parseScore(aiData.aiProbability, 100 - trustScoreNum);
 
     const scanRecord = new Scan({
       userId: req.user.id,
@@ -1260,7 +1272,7 @@ app.post('/analyze-document', authenticateToken, upload.single('document'), asyn
 app.post("/analyze-url", authenticateToken, async (req, res) => {
   try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
     const { url } = req.body;
     if (!url) return res.status(400).json({ error: "Missing url" });
 
@@ -1293,8 +1305,8 @@ app.post("/analyze-url", authenticateToken, async (req, res) => {
     const localRes = await axios.post(`${LOCAL_AI_URL}/analyze-url`, { url, pageText });
     const aiData = localRes.data;
 
-    const trustScoreNum = Number(aiData.trustScore) || 50;
-    const aiProbNum = 100 - trustScoreNum;
+    const trustScoreNum = parseScore(aiData.trustScore, 50);
+    const aiProbNum = parseScore(aiData.aiProbability, 100 - trustScoreNum);
 
     // 4. Save scan to history
     const scanRecord = new Scan({
@@ -1399,7 +1411,7 @@ app.post('/feed/:id/comment', authenticateToken, async (req, res) => {
 app.post('/analyze-live-audio', authenticateToken, async (req, res) => {
   try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
     
     let aiResponse;
     try {
@@ -1413,8 +1425,8 @@ app.post('/analyze-live-audio', authenticateToken, async (req, res) => {
       };
     }
 
-    const trustScoreNum = Number(aiResponse.trustScore) || 50;
-    const aiProbNum = 100 - trustScoreNum;
+    const trustScoreNum = parseScore(aiResponse.trustScore, 50);
+    const aiProbNum = parseScore(aiResponse.aiProbability, 100 - trustScoreNum);
 
     const newScan = new Scan({
       userId: req.user.id,
@@ -1450,7 +1462,7 @@ app.post('/analyze-live-audio', authenticateToken, async (req, res) => {
 app.get('/quiz', authenticateToken, async (req, res) => {
   try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
     let questions;
     try {
       const localRes = await axios.get(`${LOCAL_AI_URL}/quiz`);
@@ -1472,7 +1484,7 @@ app.get('/quiz', authenticateToken, async (req, res) => {
 app.get('/news', authenticateToken, async (req, res) => {
   try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
     let news;
     try {
       const localRes = await axios.get(`${LOCAL_AI_URL}/news`);
@@ -1496,7 +1508,7 @@ app.get('/news', authenticateToken, async (req, res) => {
 app.get('/learning', authenticateToken, async (req, res) => {
   try {
     const fullUser = await User.findById(req.user.id);
-    const userSettings = fullUser.settings || { autoSave: true, notifications: true, deepScan: false };
+    const userSettings = (fullUser && fullUser.settings) ? fullUser.settings : { autoSave: true, notifications: true, deepScan: false };
     let articles;
     try {
       const localRes = await axios.get(`${LOCAL_AI_URL}/learning`);

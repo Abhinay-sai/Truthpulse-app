@@ -105,7 +105,7 @@ class AboutAppScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 12),
                     Text(
-                      "• Flutter & Dart\n• Node.js & Express\n• Google Gemini 2.5 AI\n• MongoDB",
+                      "• Flutter & Dart\n• Node.js & Express\n• TruthPulse Custom AI Engine\n• PyTorch & Scikit-Learn\n• MongoDB",
                       style: TextStyle(
                         color: FigmaTheme.textMuted,
                         fontSize: 15,
