@@ -13,9 +13,7 @@ android {
 
     namespace = "com.example.truthpulse"
 
-    compileSdk = flutter.compileSdkVersion
-
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 34
 
     compileOptions {
 
@@ -36,10 +34,9 @@ android {
         applicationId =
             "com.example.truthpulse"
 
-        minSdk = flutter.minSdkVersion
+        minSdk = 21
 
-        targetSdk =
-            flutter.targetSdkVersion
+        targetSdk = 34
 
         versionCode =
             flutter.versionCode
