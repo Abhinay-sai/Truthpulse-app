@@ -24,13 +24,14 @@ jobs:
       - name: Stage 2 - Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
+          distribution: 'temurin'
           java-version: '17'
 
       - name: Stage 3 - Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
 
       - name: Create Mock Secrets
         run: |
@@ -41,7 +42,10 @@ jobs:
         run: flutter pub get
 
       - name: Stage 5 - Build APK
-        run: flutter build apk --debug
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --debug --no-tree-shake-icons
         env:
           GRADLE_OPTS: "-Xmx4g -Dorg.gradle.daemon=false"
 
