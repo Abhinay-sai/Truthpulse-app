@@ -21,10 +21,16 @@ async function testDynamicBehavior() {
     }
   ];
 
+  const email = `dynamic_test_${Date.now()}@truthpulse.com`;
+  await axios.post(`${LOCAL_AI_URL}/auth/register`, { name: 'Dynamic Tester', email, password: 'Password123!' });
+  const verifyRes = await axios.post(`${LOCAL_AI_URL}/auth/verify-email`, { email, otp: '000000' });
+  const token = verifyRes.data.token;
+  const authHeaders = { headers: { Authorization: `Bearer ${token}` } };
+
   console.log("--- 1. TESTING /analyze-text WITH 3 DIFFERENT TEXTS ---");
   for (let item of textInputs) {
     try {
-      const res = await axios.post(`${LOCAL_AI_URL}/analyze-text`, { text: item.text });
+      const res = await axios.post(`${LOCAL_AI_URL}/analyze-text`, { text: item.text }, authHeaders);
       console.log(`\n📌 [${item.name}]`);
       console.log(`   Text Sample: "${item.text.substring(0, 70)}..."`);
       console.log(`   👉 Calculated AI Probability: ${res.data.aiProbability}`);
@@ -40,7 +46,7 @@ async function testDynamicBehavior() {
   const handles = ["@verified_dr_smith", "@crypto_giveaway_bot_99581", "@jane_doe_photography"];
   for (let handle of handles) {
     try {
-      const res = await axios.post(`${LOCAL_AI_URL}/analyze-social`, { handle: handle });
+      const res = await axios.post(`${LOCAL_AI_URL}/analyze-social`, { handle: handle }, authHeaders);
       console.log(`\n📌 [Handle: ${handle}]`);
       console.log(`   👉 AI/Bot Probability: ${res.data.aiProbability} | Trust Score: ${res.data.trustScore} | Status: ${res.data.status}`);
       console.log(`   👉 Dynamic Explanation: "${res.data.explanation}"`);

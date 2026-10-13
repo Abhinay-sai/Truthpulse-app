@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "figmaappidea/dist",
+  "outputDirectory": "build/web",
   "rewrites": [
     {
       "source": "/(.*)",
