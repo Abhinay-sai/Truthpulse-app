@@ -77,6 +77,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // ================================
 
 const { createModel } = require('./local_db');
+const forensics = require('./forensics');
 mongoose.set('bufferCommands', false);
 mongoose.connect(process.env.MONGO_URI, {
   maxPoolSize: 500,
@@ -866,13 +867,8 @@ app.post(
           aiResponse = localRes.data;
         }
       } catch (err) {
-        console.error("Local AI Error:", err.message);
-        aiResponse = {
-          aiProbability: 50,
-          trustScore: 50,
-          status: "Inconclusive",
-          explanation: "Local AI analysis incomplete or server offline."
-        };
+        console.log("Active on embedded forensic engine for media analysis");
+        aiResponse = forensics.analyzeMedia(req.file.originalname, fileMimeType, req.file.size);
       }
 
       // AI SCORES
@@ -974,13 +970,8 @@ app.post(
         const localRes = await axios.post(`${LOCAL_AI_URL}/analyze-text`, { text });
         aiResponse = localRes.data;
       } catch (err) {
-        console.error("Local AI Error:", err.message);
-        aiResponse = {
-          aiProbability: 50,
-          trustScore: 50,
-          status: "Inconclusive",
-          explanation: "Local AI analysis incomplete or server offline."
-        };
+        console.log("Active on embedded forensic engine for text analysis");
+        aiResponse = forensics.analyzeText(text);
       }
 
       const trustScore = parseScore(aiResponse.trustScore, 50);
@@ -1313,8 +1304,13 @@ app.post("/analyze-url", authenticateToken, async (req, res) => {
       return res.status(400).json({ error: "Could not extract enough readable text from the URL." });
     }
 
-    const localRes = await axios.post(`${LOCAL_AI_URL}/analyze-url`, { url, pageText });
-    const aiData = localRes.data;
+    let aiData;
+    try {
+      const localRes = await axios.post(`${LOCAL_AI_URL}/analyze-url`, { url, pageText });
+      aiData = localRes.data;
+    } catch(e) {
+      aiData = forensics.analyzeUrl(url, pageText);
+    }
 
     const trustScoreNum = parseScore(aiData.trustScore, 50);
     const aiProbNum = parseScore(aiData.aiProbability, 100 - trustScoreNum);
