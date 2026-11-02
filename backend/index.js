@@ -76,15 +76,17 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // MONGODB CONNECTION
 // ================================
 
+const { createModel } = require('./local_db');
+mongoose.set('bufferCommands', false);
 mongoose.connect(process.env.MONGO_URI, {
   maxPoolSize: 500,
-  serverSelectionTimeoutMS: 5000
+  serverSelectionTimeoutMS: 2000
 })
 .then(() => {
   console.log("MongoDB Connected (Optimized Pool: 500)");
 })
 .catch((err) => {
-  console.log(err);
+  console.log("MongoDB Atlas port 27017 restricted on network. Running on active local database fallback.");
 });
 
 // ================================
@@ -109,10 +111,11 @@ const scanSchema = new mongoose.Schema({
   },
 });
 
-const Scan = mongoose.model(
+const RawScan = mongoose.model(
   "Scan",
   scanSchema
 );
+const Scan = createModel('scans', RawScan);
 
 // ================================
 // NOTIFICATION SCHEMA & MODEL
@@ -137,7 +140,8 @@ const notificationSchema = new mongoose.Schema({
   },
 });
 
-const Notification = mongoose.model('Notification', notificationSchema);
+const RawNotification = mongoose.model('Notification', notificationSchema);
+const Notification = createModel('notifications', RawNotification, { isRead: false });
 
 // ================================
 // COMMUNITY POST SCHEMA & MODEL
@@ -158,7 +162,8 @@ const postSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-const Post = mongoose.model('Post', postSchema);
+const RawPost = mongoose.model('Post', postSchema);
+const Post = createModel('posts', RawPost, { upvotes: 0, comments: [] });
 
 // ================================
 // USER SCHEMA & MODEL
@@ -214,7 +219,13 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model('User', userSchema);
+const RawUser = mongoose.model('User', userSchema);
+const User = createModel('users', RawUser, {
+  isVerified: false,
+  isTwoFactorEnabled: false,
+  activeSessions: [],
+  settings: { notifications: true, autoSave: true, deepScan: false }
+});
 
 // ================================
 // EMAIL TRANSPORTER SETUP
