@@ -22,11 +22,15 @@ jobs:
 
       - name: Stage 3 - Inspect downloaded artifact
         run: |
-          ls -la
+          find . -name "*.apk"
+          APK_FILE=$(find . -name "*.apk" | head -n 1)
+          echo "Found APK: $APK_FILE"
+          cp "$APK_FILE" ./TruthPulse.apk
 
       - name: Stage 4 - Create Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release delete v1.0.0 --yes || true
-          gh release create v1.0.0 app-release.apk --title "TruthPulse Production Release v1.0.0" --notes "Production Android APK with live Render backend integration"
+          git tag -d v1.0.0 || true
+          gh release create v1.0.0 ./TruthPulse.apk --title "TruthPulse Production Release v1.0.0" --notes "Production Android APK with live Render backend integration"
