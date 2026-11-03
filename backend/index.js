@@ -1543,6 +1543,21 @@ app.get('/learning', authenticateToken, async (req, res) => {
 
 
 // ================================
+// SERVE FLUTTER WEB APP
+// ================================
+const path = require('path');
+const publicDir = path.join(__dirname, 'public');
+app.use(express.static(publicDir));
+
+app.use((req, res, next) => {
+  if (req.method !== 'GET') return next();
+  if (req.path.startsWith('/auth') || req.path.startsWith('/api') || req.path.startsWith('/analyze') || req.path.startsWith('/quiz') || req.path.startsWith('/news') || req.path.startsWith('/learning')) {
+    return next();
+  }
+  res.sendFile(path.join(publicDir, 'index.html'));
+});
+
+// ================================
 // START SERVER
 // ================================
 

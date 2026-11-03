@@ -19,3 +19,4 @@ services:
         sync: false
       - key: LOCAL_AI_URL
         value: http://localhost:5001
+
