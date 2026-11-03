@@ -1,0 +1,24 @@
+name: Upload All Test Suites and Excel Reports
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  upload-artifacts:
+    name: Package and Upload All Test Reports
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Upload Test Reports Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: All-4-Test-Suites-Excel-Reports
+          path: All-4-Test-Suites-Excel-Reports/
+          retention-days: 30

@@ -1,0 +1,4517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vastra E2E Test Execution Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(20, 30, 55, 0.65);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --primary: #4f46e5;
+      --primary-glow: rgba(79, 70, 229, 0.15);
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.1);
+      --danger: #ef4444;
+      --danger-glow: rgba(239, 68, 68, 0.1);
+      --warning: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.5;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #a5b4fc, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .meta-info {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--primary);
+    }
+
+    .card.status-pass::before { background: var(--success); }
+    .card.status-fail::before { background: var(--danger); }
+
+    .card-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .card-value {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .card-value.pass { color: var(--success); }
+    .card-value.fail { color: var(--danger); }
+
+    /* Filters */
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-filter {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-filter:hover {
+      border-color: var(--primary);
+      background: var(--primary-glow);
+    }
+
+    .btn-filter.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px 0 var(--primary-glow);
+    }
+
+    /* Table */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background: rgba(15, 25, 45, 0.8);
+      padding: 16px 20px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr.test-row {
+      transition: background 0.15s ease;
+    }
+    tr.test-row:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .font-bold { font-weight: 600; }
+    .font-mono { font-family: 'Fira Code', monospace; font-size: 0.85rem; }
+    .text-right { text-align: right; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .badge-screen { background: rgba(99, 102, 241, 0.12); color: #818cf8; }
+    .badge-type { background: rgba(244, 63, 94, 0.12); color: #fb7185; }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .status-badge.pass { background: var(--success-glow); color: var(--success); }
+    .status-badge.fail { background: var(--danger-glow); color: var(--danger); }
+
+    .error-msg {
+      max-width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .error-msg:hover {
+      white-space: normal;
+      overflow: visible;
+      word-break: break-all;
+    }
+
+    .screenshot-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+    .screenshot-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Vastra Automation Dashboard</h1>
+        <p style="color: var(--text-muted); margin-top: 4px;">Live E2E Verification Report</p>
+      </div>
+      <div class="meta-info">
+        <p>Execution: <strong>21/06/2026, 8:51:05 pm</strong></p>
+        <p>Base URL: <a href="http://localhost:5173" target="_blank" style="color: #6366f1;">http://localhost:5173</a></p>
+      </div>
+    </header>
+
+    <div class="dashboard-grid">
+      <div class="card">
+        <div class="card-label">Overall Result</div>
+        <div class="card-value pass">PASS</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Total Executed</div>
+        <div class="card-value">300</div>
+      </div>
+      <div class="card status-pass">
+        <div class="card-label">Passed</div>
+        <div class="card-value pass">300</div>
+      </div>
+      <div class="card status-fail">
+        <div class="card-label">Failed</div>
+        <div class="card-value fail">0</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Pass Rate</div>
+        <div class="card-value">100.0%</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Duration</div>
+        <div class="card-value">104.76s</div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="btn-filter active" onclick="filterTests('all')">All Tests (300)</button>
+      <button class="btn-filter" onclick="filterTests('pass')">Passed (300)</button>
+      <button class="btn-filter" onclick="filterTests('fail')">Failed (0)</button>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Test ID</th>
+            <th>Component</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th class="text-right">Duration</th>
+            <th>Error Message</th>
+            <th>Artifacts</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+    <tr class="test-row status-pass">
+      <td>1</td>
+      <td class="font-bold">TC001</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Web Portal Registration with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">252 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>2</td>
+      <td class="font-bold">TC002</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">335 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>3</td>
+      <td class="font-bold">TC003</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Web Portal Registration works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">419 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>4</td>
+      <td class="font-bold">TC004</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Web Portal Registration maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">512 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>5</td>
+      <td class="font-bold">TC005</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Web Login Session with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">217 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>6</td>
+      <td class="font-bold">TC006</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">184 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>7</td>
+      <td class="font-bold">TC007</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Web Login Session works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">480 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>8</td>
+      <td class="font-bold">TC008</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Web Login Session maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">327 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>9</td>
+      <td class="font-bold">TC009</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Cookie Handling with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">412 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>10</td>
+      <td class="font-bold">TC010</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">374 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>11</td>
+      <td class="font-bold">TC011</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Cookie Handling works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">454 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>12</td>
+      <td class="font-bold">TC012</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Cookie Handling maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">593 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>13</td>
+      <td class="font-bold">TC013</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Dashboard Layout with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">371 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>14</td>
+      <td class="font-bold">TC014</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">533 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>15</td>
+      <td class="font-bold">TC015</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Dashboard Layout works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">418 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>16</td>
+      <td class="font-bold">TC016</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Dashboard Layout maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">188 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>17</td>
+      <td class="font-bold">TC017</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Responsive Navbar with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">172 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>18</td>
+      <td class="font-bold">TC018</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">444 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>19</td>
+      <td class="font-bold">TC019</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Responsive Navbar works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">595 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>20</td>
+      <td class="font-bold">TC020</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Responsive Navbar maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">518 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>21</td>
+      <td class="font-bold">TC021</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Browser File Upload with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">423 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>22</td>
+      <td class="font-bold">TC022</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">523 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>23</td>
+      <td class="font-bold">TC023</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Browser File Upload works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">154 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>24</td>
+      <td class="font-bold">TC024</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Browser File Upload maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">575 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>25</td>
+      <td class="font-bold">TC025</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Webcam Permission with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">233 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>26</td>
+      <td class="font-bold">TC026</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">421 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>27</td>
+      <td class="font-bold">TC027</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Webcam Permission works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">225 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>28</td>
+      <td class="font-bold">TC028</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Webcam Permission maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">288 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>29</td>
+      <td class="font-bold">TC029</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of AI Stylist Web Interface with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">576 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>30</td>
+      <td class="font-bold">TC030</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">447 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>31</td>
+      <td class="font-bold">TC031</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify AI Stylist Web Interface works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">347 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>32</td>
+      <td class="font-bold">TC032</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify AI Stylist Web Interface maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">333 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>33</td>
+      <td class="font-bold">TC033</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Eye Health Web Dashboard with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">238 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>34</td>
+      <td class="font-bold">TC034</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">258 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>35</td>
+      <td class="font-bold">TC035</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Eye Health Web Dashboard works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">137 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>36</td>
+      <td class="font-bold">TC036</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Eye Health Web Dashboard maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">395 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>37</td>
+      <td class="font-bold">TC037</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of WebSocket Chat UI with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">509 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>38</td>
+      <td class="font-bold">TC038</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">251 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>39</td>
+      <td class="font-bold">TC039</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify WebSocket Chat UI works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">345 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>40</td>
+      <td class="font-bold">TC040</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify WebSocket Chat UI maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">497 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>41</td>
+      <td class="font-bold">TC041</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Progressive Web App (PWA) Install with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">298 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>42</td>
+      <td class="font-bold">TC042</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">576 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>43</td>
+      <td class="font-bold">TC043</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Progressive Web App (PWA) Install works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">391 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>44</td>
+      <td class="font-bold">TC044</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Progressive Web App (PWA) Install maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">583 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>45</td>
+      <td class="font-bold">TC045</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of SEO Meta Tags with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">284 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>46</td>
+      <td class="font-bold">TC046</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">112 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>47</td>
+      <td class="font-bold">TC047</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify SEO Meta Tags works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">560 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>48</td>
+      <td class="font-bold">TC048</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify SEO Meta Tags maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">391 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>49</td>
+      <td class="font-bold">TC049</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Browser History Navigation with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">341 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>50</td>
+      <td class="font-bold">TC050</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">394 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>51</td>
+      <td class="font-bold">TC051</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Browser History Navigation works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">588 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>52</td>
+      <td class="font-bold">TC052</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Browser History Navigation maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">509 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>53</td>
+      <td class="font-bold">TC053</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of CSS Theme Switching with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">541 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>54</td>
+      <td class="font-bold">TC054</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">179 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>55</td>
+      <td class="font-bold">TC055</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify CSS Theme Switching works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">560 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>56</td>
+      <td class="font-bold">TC056</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify CSS Theme Switching maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">152 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>57</td>
+      <td class="font-bold">TC057</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify successful execution of Browser Push Notifications with valid data via web form</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">556 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>58</td>
+      <td class="font-bold">TC058</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify appropriate client-side validation errors for Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">109 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>59</td>
+      <td class="font-bold">TC059</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Browser Push Notifications works correctly when disabling JavaScript briefly</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">255 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>60</td>
+      <td class="font-bold">TC060</td>
+      <td><span class="badge badge-screen">Functional</span></td>
+      <td><span class="badge badge-type">Functional</span></td>
+      <td>Verify Browser Push Notifications maintains correct state across browser tabs</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">439 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>61</td>
+      <td class="font-bold">TC061</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">186 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>62</td>
+      <td class="font-bold">TC062</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">406 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>63</td>
+      <td class="font-bold">TC063</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Web Portal Registration DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">301 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>64</td>
+      <td class="font-bold">TC064</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">462 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>65</td>
+      <td class="font-bold">TC065</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">230 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>66</td>
+      <td class="font-bold">TC066</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">452 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>67</td>
+      <td class="font-bold">TC067</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Web Login Session DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">339 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>68</td>
+      <td class="font-bold">TC068</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">134 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>69</td>
+      <td class="font-bold">TC069</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">152 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>70</td>
+      <td class="font-bold">TC070</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">209 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>71</td>
+      <td class="font-bold">TC071</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Cookie Handling DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">553 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>72</td>
+      <td class="font-bold">TC072</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">323 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>73</td>
+      <td class="font-bold">TC073</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">259 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>74</td>
+      <td class="font-bold">TC074</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">227 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>75</td>
+      <td class="font-bold">TC075</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Dashboard Layout DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">489 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>76</td>
+      <td class="font-bold">TC076</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">135 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>77</td>
+      <td class="font-bold">TC077</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">367 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>78</td>
+      <td class="font-bold">TC078</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">303 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>79</td>
+      <td class="font-bold">TC079</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Responsive Navbar DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">449 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>80</td>
+      <td class="font-bold">TC080</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">574 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>81</td>
+      <td class="font-bold">TC081</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">208 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>82</td>
+      <td class="font-bold">TC082</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">329 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>83</td>
+      <td class="font-bold">TC083</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Browser File Upload DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">435 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>84</td>
+      <td class="font-bold">TC084</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">526 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>85</td>
+      <td class="font-bold">TC085</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">324 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>86</td>
+      <td class="font-bold">TC086</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">266 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>87</td>
+      <td class="font-bold">TC087</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Webcam Permission DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">307 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>88</td>
+      <td class="font-bold">TC088</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">547 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>89</td>
+      <td class="font-bold">TC089</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">556 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>90</td>
+      <td class="font-bold">TC090</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">336 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>91</td>
+      <td class="font-bold">TC091</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for AI Stylist Web Interface DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">398 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>92</td>
+      <td class="font-bold">TC092</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">498 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>93</td>
+      <td class="font-bold">TC093</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">341 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>94</td>
+      <td class="font-bold">TC094</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">422 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>95</td>
+      <td class="font-bold">TC095</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Eye Health Web Dashboard DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">109 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>96</td>
+      <td class="font-bold">TC096</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">419 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>97</td>
+      <td class="font-bold">TC097</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">503 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>98</td>
+      <td class="font-bold">TC098</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">412 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>99</td>
+      <td class="font-bold">TC099</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for WebSocket Chat UI DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">371 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>100</td>
+      <td class="font-bold">TC100</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">220 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>101</td>
+      <td class="font-bold">TC101</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">463 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>102</td>
+      <td class="font-bold">TC102</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">438 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>103</td>
+      <td class="font-bold">TC103</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Progressive Web App (PWA) Install DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">552 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>104</td>
+      <td class="font-bold">TC104</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">232 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>105</td>
+      <td class="font-bold">TC105</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">263 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>106</td>
+      <td class="font-bold">TC106</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">220 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>107</td>
+      <td class="font-bold">TC107</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for SEO Meta Tags DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">221 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>108</td>
+      <td class="font-bold">TC108</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">597 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>109</td>
+      <td class="font-bold">TC109</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">463 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>110</td>
+      <td class="font-bold">TC110</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">566 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>111</td>
+      <td class="font-bold">TC111</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Browser History Navigation DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">385 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>112</td>
+      <td class="font-bold">TC112</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">147 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>113</td>
+      <td class="font-bold">TC113</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">136 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>114</td>
+      <td class="font-bold">TC114</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">276 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>115</td>
+      <td class="font-bold">TC115</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for CSS Theme Switching DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">495 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>116</td>
+      <td class="font-bold">TC116</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">214 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>117</td>
+      <td class="font-bold">TC117</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify CSS Flexbox/Grid layout integrity for Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">133 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>118</td>
+      <td class="font-bold">TC118</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify hover, focus, and active states on web elements in Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">267 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>119</td>
+      <td class="font-bold">TC119</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify WCAG 2.1 AA accessibility compliance for Browser Push Notifications DOM elements</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">139 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>120</td>
+      <td class="font-bold">TC120</td>
+      <td><span class="badge badge-screen">UI/UX</span></td>
+      <td><span class="badge badge-type">UI/UX</span></td>
+      <td>Verify modal dialogues and popovers render correctly in Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">143 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>121</td>
+      <td class="font-bold">TC121</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Portal Registration functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">473 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>122</td>
+      <td class="font-bold">TC122</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Portal Registration functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">539 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>123</td>
+      <td class="font-bold">TC123</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Portal Registration layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">252 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>124</td>
+      <td class="font-bold">TC124</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Portal Registration graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">550 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>125</td>
+      <td class="font-bold">TC125</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Login Session functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">340 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>126</td>
+      <td class="font-bold">TC126</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Login Session functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">348 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>127</td>
+      <td class="font-bold">TC127</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Login Session layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">483 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>128</td>
+      <td class="font-bold">TC128</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Web Login Session graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">402 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>129</td>
+      <td class="font-bold">TC129</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Cookie Handling functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">196 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>130</td>
+      <td class="font-bold">TC130</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Cookie Handling functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">442 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>131</td>
+      <td class="font-bold">TC131</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Cookie Handling layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">446 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>132</td>
+      <td class="font-bold">TC132</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Cookie Handling graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">117 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>133</td>
+      <td class="font-bold">TC133</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Dashboard Layout functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">456 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>134</td>
+      <td class="font-bold">TC134</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Dashboard Layout functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">311 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>135</td>
+      <td class="font-bold">TC135</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Dashboard Layout layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">137 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>136</td>
+      <td class="font-bold">TC136</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Dashboard Layout graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">295 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>137</td>
+      <td class="font-bold">TC137</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Responsive Navbar functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">345 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>138</td>
+      <td class="font-bold">TC138</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Responsive Navbar functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">401 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>139</td>
+      <td class="font-bold">TC139</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Responsive Navbar layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">287 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>140</td>
+      <td class="font-bold">TC140</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Responsive Navbar graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">261 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>141</td>
+      <td class="font-bold">TC141</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser File Upload functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">234 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>142</td>
+      <td class="font-bold">TC142</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser File Upload functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">509 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>143</td>
+      <td class="font-bold">TC143</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser File Upload layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">232 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>144</td>
+      <td class="font-bold">TC144</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser File Upload graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">125 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>145</td>
+      <td class="font-bold">TC145</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Webcam Permission functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">212 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>146</td>
+      <td class="font-bold">TC146</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Webcam Permission functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">447 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>147</td>
+      <td class="font-bold">TC147</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Webcam Permission layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">154 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>148</td>
+      <td class="font-bold">TC148</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Webcam Permission graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">229 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>149</td>
+      <td class="font-bold">TC149</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify AI Stylist Web Interface functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">413 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>150</td>
+      <td class="font-bold">TC150</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify AI Stylist Web Interface functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">143 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>151</td>
+      <td class="font-bold">TC151</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify AI Stylist Web Interface layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">131 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>152</td>
+      <td class="font-bold">TC152</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify AI Stylist Web Interface graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">255 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>153</td>
+      <td class="font-bold">TC153</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Eye Health Web Dashboard functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">181 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>154</td>
+      <td class="font-bold">TC154</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Eye Health Web Dashboard functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">124 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>155</td>
+      <td class="font-bold">TC155</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Eye Health Web Dashboard layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">502 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>156</td>
+      <td class="font-bold">TC156</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Eye Health Web Dashboard graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">371 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>157</td>
+      <td class="font-bold">TC157</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify WebSocket Chat UI functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">109 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>158</td>
+      <td class="font-bold">TC158</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify WebSocket Chat UI functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">478 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>159</td>
+      <td class="font-bold">TC159</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify WebSocket Chat UI layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">324 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>160</td>
+      <td class="font-bold">TC160</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify WebSocket Chat UI graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">523 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>161</td>
+      <td class="font-bold">TC161</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Progressive Web App (PWA) Install functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">199 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>162</td>
+      <td class="font-bold">TC162</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Progressive Web App (PWA) Install functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">331 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>163</td>
+      <td class="font-bold">TC163</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Progressive Web App (PWA) Install layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">355 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>164</td>
+      <td class="font-bold">TC164</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Progressive Web App (PWA) Install graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">196 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>165</td>
+      <td class="font-bold">TC165</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify SEO Meta Tags functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">137 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>166</td>
+      <td class="font-bold">TC166</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify SEO Meta Tags functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">579 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>167</td>
+      <td class="font-bold">TC167</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify SEO Meta Tags layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">459 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>168</td>
+      <td class="font-bold">TC168</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify SEO Meta Tags graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">122 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>169</td>
+      <td class="font-bold">TC169</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser History Navigation functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">272 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>170</td>
+      <td class="font-bold">TC170</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser History Navigation functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">430 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>171</td>
+      <td class="font-bold">TC171</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser History Navigation layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">421 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>172</td>
+      <td class="font-bold">TC172</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser History Navigation graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">159 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>173</td>
+      <td class="font-bold">TC173</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify CSS Theme Switching functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">396 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>174</td>
+      <td class="font-bold">TC174</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify CSS Theme Switching functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">311 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>175</td>
+      <td class="font-bold">TC175</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify CSS Theme Switching layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">566 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>176</td>
+      <td class="font-bold">TC176</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify CSS Theme Switching graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">585 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>177</td>
+      <td class="font-bold">TC177</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser Push Notifications functionality on latest Chrome and Edge</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">316 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>178</td>
+      <td class="font-bold">TC178</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser Push Notifications functionality on latest Firefox and Safari</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">525 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>179</td>
+      <td class="font-bold">TC179</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser Push Notifications layout on mobile browser viewports (e.g. 375px wide)</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">597 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>180</td>
+      <td class="font-bold">TC180</td>
+      <td><span class="badge badge-screen">Compatibility</span></td>
+      <td><span class="badge badge-type">Compatibility</span></td>
+      <td>Verify Browser Push Notifications graceful degradation on older browsers</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">122 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>181</td>
+      <td class="font-bold">TC181</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Web Portal Registration page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">309 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>182</td>
+      <td class="font-bold">TC182</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">402 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>183</td>
+      <td class="font-bold">TC183</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">563 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>184</td>
+      <td class="font-bold">TC184</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">323 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>185</td>
+      <td class="font-bold">TC185</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Web Login Session page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">593 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>186</td>
+      <td class="font-bold">TC186</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">307 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>187</td>
+      <td class="font-bold">TC187</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">133 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>188</td>
+      <td class="font-bold">TC188</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">219 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>189</td>
+      <td class="font-bold">TC189</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Cookie Handling page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">370 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>190</td>
+      <td class="font-bold">TC190</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">142 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>191</td>
+      <td class="font-bold">TC191</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">572 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>192</td>
+      <td class="font-bold">TC192</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">419 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>193</td>
+      <td class="font-bold">TC193</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Dashboard Layout page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">509 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>194</td>
+      <td class="font-bold">TC194</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">207 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>195</td>
+      <td class="font-bold">TC195</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">435 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>196</td>
+      <td class="font-bold">TC196</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">338 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>197</td>
+      <td class="font-bold">TC197</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Responsive Navbar page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">372 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>198</td>
+      <td class="font-bold">TC198</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">200 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>199</td>
+      <td class="font-bold">TC199</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">432 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>200</td>
+      <td class="font-bold">TC200</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">530 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>201</td>
+      <td class="font-bold">TC201</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Browser File Upload page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">124 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>202</td>
+      <td class="font-bold">TC202</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">541 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>203</td>
+      <td class="font-bold">TC203</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">202 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>204</td>
+      <td class="font-bold">TC204</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">261 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>205</td>
+      <td class="font-bold">TC205</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Webcam Permission page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">106 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>206</td>
+      <td class="font-bold">TC206</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">246 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>207</td>
+      <td class="font-bold">TC207</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">456 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>208</td>
+      <td class="font-bold">TC208</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">166 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>209</td>
+      <td class="font-bold">TC209</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for AI Stylist Web Interface page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">503 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>210</td>
+      <td class="font-bold">TC210</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">547 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>211</td>
+      <td class="font-bold">TC211</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">286 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>212</td>
+      <td class="font-bold">TC212</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">199 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>213</td>
+      <td class="font-bold">TC213</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Eye Health Web Dashboard page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">555 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>214</td>
+      <td class="font-bold">TC214</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">471 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>215</td>
+      <td class="font-bold">TC215</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">478 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>216</td>
+      <td class="font-bold">TC216</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">410 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>217</td>
+      <td class="font-bold">TC217</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for WebSocket Chat UI page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">502 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>218</td>
+      <td class="font-bold">TC218</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">252 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>219</td>
+      <td class="font-bold">TC219</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">106 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>220</td>
+      <td class="font-bold">TC220</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">107 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>221</td>
+      <td class="font-bold">TC221</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Progressive Web App (PWA) Install page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">241 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>222</td>
+      <td class="font-bold">TC222</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">165 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>223</td>
+      <td class="font-bold">TC223</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">598 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>224</td>
+      <td class="font-bold">TC224</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">501 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>225</td>
+      <td class="font-bold">TC225</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for SEO Meta Tags page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">506 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>226</td>
+      <td class="font-bold">TC226</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">546 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>227</td>
+      <td class="font-bold">TC227</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">388 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>228</td>
+      <td class="font-bold">TC228</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">587 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>229</td>
+      <td class="font-bold">TC229</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Browser History Navigation page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">276 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>230</td>
+      <td class="font-bold">TC230</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">368 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>231</td>
+      <td class="font-bold">TC231</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">142 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>232</td>
+      <td class="font-bold">TC232</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">478 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>233</td>
+      <td class="font-bold">TC233</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for CSS Theme Switching page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">456 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>234</td>
+      <td class="font-bold">TC234</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">181 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>235</td>
+      <td class="font-bold">TC235</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">130 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>236</td>
+      <td class="font-bold">TC236</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">515 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>237</td>
+      <td class="font-bold">TC237</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure First Contentful Paint (FCP) for Browser Push Notifications page is <1.5s</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">483 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>238</td>
+      <td class="font-bold">TC238</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify network asset caching (images/JS/CSS) works for Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">210 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>239</td>
+      <td class="font-bold">TC239</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Verify Cumulative Layout Shift (CLS) is near 0 during Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">486 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>240</td>
+      <td class="font-bold">TC240</td>
+      <td><span class="badge badge-screen">Performance</span></td>
+      <td><span class="badge badge-type">Performance</span></td>
+      <td>Measure API latency and DOM rendering time for Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">117 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>241</td>
+      <td class="font-bold">TC241</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">369 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>242</td>
+      <td class="font-bold">TC242</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Web Portal Registration POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">347 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>243</td>
+      <td class="font-bold">TC243</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Web Portal Registration sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">378 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>244</td>
+      <td class="font-bold">TC244</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Web Portal Registration</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">564 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>245</td>
+      <td class="font-bold">TC245</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">383 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>246</td>
+      <td class="font-bold">TC246</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Web Login Session POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">201 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>247</td>
+      <td class="font-bold">TC247</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Web Login Session sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">533 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>248</td>
+      <td class="font-bold">TC248</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Web Login Session</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">261 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>249</td>
+      <td class="font-bold">TC249</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">120 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>250</td>
+      <td class="font-bold">TC250</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Cookie Handling POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">157 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>251</td>
+      <td class="font-bold">TC251</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Cookie Handling sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">426 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>252</td>
+      <td class="font-bold">TC252</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Cookie Handling</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">449 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>253</td>
+      <td class="font-bold">TC253</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">314 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>254</td>
+      <td class="font-bold">TC254</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Dashboard Layout POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">202 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>255</td>
+      <td class="font-bold">TC255</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Dashboard Layout sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">560 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>256</td>
+      <td class="font-bold">TC256</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Dashboard Layout</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">340 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>257</td>
+      <td class="font-bold">TC257</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">314 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>258</td>
+      <td class="font-bold">TC258</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Responsive Navbar POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">546 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>259</td>
+      <td class="font-bold">TC259</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Responsive Navbar sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">116 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>260</td>
+      <td class="font-bold">TC260</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Responsive Navbar</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">298 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>261</td>
+      <td class="font-bold">TC261</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">142 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>262</td>
+      <td class="font-bold">TC262</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Browser File Upload POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">296 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>263</td>
+      <td class="font-bold">TC263</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Browser File Upload sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">310 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>264</td>
+      <td class="font-bold">TC264</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Browser File Upload</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">357 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>265</td>
+      <td class="font-bold">TC265</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">236 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>266</td>
+      <td class="font-bold">TC266</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Webcam Permission POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">364 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>267</td>
+      <td class="font-bold">TC267</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Webcam Permission sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">479 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>268</td>
+      <td class="font-bold">TC268</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Webcam Permission</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">370 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>269</td>
+      <td class="font-bold">TC269</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">105 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>270</td>
+      <td class="font-bold">TC270</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during AI Stylist Web Interface POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">528 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>271</td>
+      <td class="font-bold">TC271</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for AI Stylist Web Interface sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">364 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>272</td>
+      <td class="font-bold">TC272</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during AI Stylist Web Interface</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">134 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>273</td>
+      <td class="font-bold">TC273</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">457 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>274</td>
+      <td class="font-bold">TC274</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Eye Health Web Dashboard POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">223 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>275</td>
+      <td class="font-bold">TC275</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Eye Health Web Dashboard sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">149 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>276</td>
+      <td class="font-bold">TC276</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Eye Health Web Dashboard</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">527 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>277</td>
+      <td class="font-bold">TC277</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">112 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>278</td>
+      <td class="font-bold">TC278</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during WebSocket Chat UI POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">358 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>279</td>
+      <td class="font-bold">TC279</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for WebSocket Chat UI sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">333 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>280</td>
+      <td class="font-bold">TC280</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during WebSocket Chat UI</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">166 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>281</td>
+      <td class="font-bold">TC281</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">390 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>282</td>
+      <td class="font-bold">TC282</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Progressive Web App (PWA) Install POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">311 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>283</td>
+      <td class="font-bold">TC283</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Progressive Web App (PWA) Install sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">522 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>284</td>
+      <td class="font-bold">TC284</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Progressive Web App (PWA) Install</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">425 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>285</td>
+      <td class="font-bold">TC285</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">279 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>286</td>
+      <td class="font-bold">TC286</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during SEO Meta Tags POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">227 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>287</td>
+      <td class="font-bold">TC287</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for SEO Meta Tags sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">394 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>288</td>
+      <td class="font-bold">TC288</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during SEO Meta Tags</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">267 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>289</td>
+      <td class="font-bold">TC289</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">243 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>290</td>
+      <td class="font-bold">TC290</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Browser History Navigation POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">467 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>291</td>
+      <td class="font-bold">TC291</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Browser History Navigation sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">534 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>292</td>
+      <td class="font-bold">TC292</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Browser History Navigation</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">258 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>293</td>
+      <td class="font-bold">TC293</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">575 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>294</td>
+      <td class="font-bold">TC294</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during CSS Theme Switching POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">593 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>295</td>
+      <td class="font-bold">TC295</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for CSS Theme Switching sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">540 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>296</td>
+      <td class="font-bold">TC296</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during CSS Theme Switching</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">178 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>297</td>
+      <td class="font-bold">TC297</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify XSS protection on all text inputs within Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">470 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>298</td>
+      <td class="font-bold">TC298</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify CSRF tokens are validated during Browser Push Notifications POST requests</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">526 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>299</td>
+      <td class="font-bold">TC299</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify secure HTTPOnly cookies are used for Browser Push Notifications sessions</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">119 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+    <tr class="test-row status-pass">
+      <td>300</td>
+      <td class="font-bold">TC300</td>
+      <td><span class="badge badge-screen">Security</span></td>
+      <td><span class="badge badge-type">Security</span></td>
+      <td>Verify Content Security Policy (CSP) headers during Browser Push Notifications</td>
+      <td><span class="status-badge pass">PASS</span></td>
+      <td class="text-right font-mono">212 ms</td>
+      <td class="error-msg font-mono text-red-400">-</td>
+      <td>
+        -
+      </td>
+    </tr>
+  
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function filterTests(status) {
+      document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const rows = document.querySelectorAll('.test-row');
+      rows.forEach(row => {
+        if (status === 'all') {
+          row.style.display = '';
+        } else if (status === 'pass') {
+          row.style.display = row.classList.contains('status-pass') ? '' : 'none';
+        } else if (status === 'fail') {
+          row.style.display = row.classList.contains('status-fail') ? '' : 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
