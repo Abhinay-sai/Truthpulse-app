@@ -253,23 +253,8 @@ const authenticateToken = async (req, res, next) => {
     const user = await User.findById(payload.id);
     if (!user) return res.status(403).json({ error: 'User no longer exists' });
     
-    // Auto-heal active session if valid JWT
-    if (!user.activeSessions) user.activeSessions = [];
-    const hasSession = user.activeSessions.some(session => session.token === token);
-    if (!hasSession) {
-      const deviceName = req.headers['user-agent']?.substring(0, 30) || 'Mobile / Client Device';
-      user.activeSessions.push({
-        deviceId: 'dev_' + Date.now(),
-        deviceName: deviceName,
-        location: 'Active Session',
-        lastActive: new Date(),
-        token: token
-      });
-      user.save().catch(e => console.error('Session auto-save err:', e));
-    }
-    
     req.user = payload;
-    req.rawToken = token; // store for easy deletion
+    req.rawToken = token;
     next();
   } catch(err) {
     return res.status(403).json({ error: 'Invalid or expired token' });
