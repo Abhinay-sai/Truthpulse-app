@@ -78,16 +78,16 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 const { createModel } = require('./local_db');
 const forensics = require('./forensics');
-mongoose.set('bufferCommands', false);
+mongoose.set('bufferCommands', true);
 mongoose.connect(process.env.MONGO_URI, {
   maxPoolSize: 500,
-  serverSelectionTimeoutMS: 2000
+  serverSelectionTimeoutMS: 30000
 })
 .then(() => {
   console.log("MongoDB Connected (Optimized Pool: 500)");
 })
 .catch((err) => {
-  console.log("MongoDB Atlas port 27017 restricted on network. Running on active local database fallback.");
+  console.log("MongoDB Atlas fallback:", err.message);
 });
 
 // ================================
