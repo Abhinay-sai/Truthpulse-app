@@ -23,9 +23,9 @@ def test_exhaustive_mobile_navigation(driver, origin_state, nav_action):
         # In a deep exhaustive test, we map 'nav_action' to an actual Appium action.
         # Here we attempt to find the navigation element.
         if "bottom_nav" in nav_action:
-            # Assuming IDs like 'com.example.vastranaveen:id/nav_home'
+            # Assuming IDs like 'com.truthpulse.app:id/nav_home'
             suffix = nav_action.split("_")[-1]
-            elements = driver.find_elements(AppiumBy.ID, f"com.example.vastranaveen:id/nav_{suffix}")
+            elements = driver.find_elements(AppiumBy.ID, f"com.truthpulse.app:id/nav_{suffix}")
         elif "back" in nav_action:
             elements = driver.find_elements(AppiumBy.CLASS_NAME, "android.widget.ImageButton")
         else:

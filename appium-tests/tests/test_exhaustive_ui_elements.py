@@ -4,14 +4,14 @@ from selenium.common.exceptions import NoSuchElementException
 
 # List of common UI element locators to test exhaustively across screens
 element_locators = [
-    (AppiumBy.ID, "com.example.vastranaveen:id/btn_login"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/btn_register"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/btn_submit"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/fab_add"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/nav_home"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/nav_profile"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/nav_settings"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/nav_chat"),
+    (AppiumBy.ID, "com.truthpulse.app:id/btn_login"),
+    (AppiumBy.ID, "com.truthpulse.app:id/btn_register"),
+    (AppiumBy.ID, "com.truthpulse.app:id/btn_submit"),
+    (AppiumBy.ID, "com.truthpulse.app:id/fab_add"),
+    (AppiumBy.ID, "com.truthpulse.app:id/nav_home"),
+    (AppiumBy.ID, "com.truthpulse.app:id/nav_profile"),
+    (AppiumBy.ID, "com.truthpulse.app:id/nav_settings"),
+    (AppiumBy.ID, "com.truthpulse.app:id/nav_chat"),
     (AppiumBy.XPATH, "//android.widget.Button"),
     (AppiumBy.XPATH, "//android.widget.ImageButton"),
     (AppiumBy.CLASS_NAME, "android.widget.Button")

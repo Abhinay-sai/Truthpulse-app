@@ -12,7 +12,7 @@ DESIRED_CAPS = {
     "appium:platformVersion": "12",
     "appium:deviceName": "Android Emulator",
     "appium:app": APK_PATH,
-    "appium:appPackage": "com.example.vastranaveen",
+    "appium:appPackage": "com.truthpulse.app",
     "appium:appActivity": ".MainActivity",
     "appium:automationName": "UiAutomator2",
     "appium:noReset": False,

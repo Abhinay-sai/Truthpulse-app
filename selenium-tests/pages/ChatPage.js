@@ -4,7 +4,7 @@ const BasePage = require('./BasePage');
 class ChatPage extends BasePage {
   constructor(driver) {
     super(driver);
-    this.chatInput = By.xpath("//input[@placeholder='Ask Vastra...' or @type='text']");
+    this.chatInput = By.xpath("//input[@placeholder='Ask Truth Pulse...' or @type='text']");
     this.sendButton = By.xpath("//button[@type='submit' or contains(@class, 'send')]");
   }
 

@@ -1,7 +1,7 @@
 {
-  "name": "vastra-selenium-tests",
+  "name": "truthpulse-selenium-tests",
   "version": "1.0.0",
-  "description": "Enterprise Selenium E2E test suite for Vastra Web App",
+  "description": "Enterprise Selenium E2E test suite for Truth Pulse Web App",
   "main": "conftest.js",
   "scripts": {
     "test": "mocha tests/**/*.test.js --require ./conftest.js --timeout 60000 --exit"

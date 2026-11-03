@@ -21,7 +21,7 @@ async function generateExcelReport() {
   const data = JSON.parse(rawData);
 
   const workbook = new ExcelJS.Workbook();
-  workbook.creator = 'Vastra Automation Suite';
+  workbook.creator = 'Truth Pulse Automation Suite';
   workbook.created = new Date();
 
   // Sheet 1: Executed Test Cases

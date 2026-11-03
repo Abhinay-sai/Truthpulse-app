@@ -20,11 +20,11 @@ input_variants = [
 
 # Common input fields across the app
 input_fields = [
-    (AppiumBy.ID, "com.example.vastranaveen:id/input_email"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/input_password"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/input_name"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/input_chat"),
-    (AppiumBy.ID, "com.example.vastranaveen:id/input_search"),
+    (AppiumBy.ID, "com.truthpulse.app:id/input_email"),
+    (AppiumBy.ID, "com.truthpulse.app:id/input_password"),
+    (AppiumBy.ID, "com.truthpulse.app:id/input_name"),
+    (AppiumBy.ID, "com.truthpulse.app:id/input_chat"),
+    (AppiumBy.ID, "com.truthpulse.app:id/input_search"),
     (AppiumBy.CLASS_NAME, "android.widget.EditText")
 ]
 

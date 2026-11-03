@@ -74,7 +74,7 @@ def generate_report(test_results, output_path=None):
     metadata = [
         ("Execution Time", datetime.now().strftime("%Y-%m-%d %H:%M:%S")),
         ("Test Platform", "Android Emulator (Android 12)"),
-        ("App Package", "com.example.vastranaveen"),
+        ("App Package", "com.truthpulse.app"),
         ("Backend URL", "http://10.0.2.2:5000"),
     ]
     for idx, (label, val) in enumerate(metadata, start=3):

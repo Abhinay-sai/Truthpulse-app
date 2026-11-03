@@ -53,7 +53,7 @@ async function generateReport(testResults, platform = 'Web') {
   const wsSummary = workbook.addWorksheet('Summary', { views: [{ showGridLines: true }] });
   wsSummary.mergeCells('A1:D1');
   const titleCell = wsSummary.getCell('A1');
-  titleCell.value = `Vastra ${platform} E2E Test Execution Report`;
+  titleCell.value = `Truth Pulse ${platform} E2E Test Execution Report`;
   titleCell.font = { name: 'Calibri', size: 16, bold: true, color: { argb: 'FFFFFFFF' } };
   titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1F497D' } };
   titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
@@ -62,7 +62,7 @@ async function generateReport(testResults, platform = 'Web') {
   const metadata = [
     ['Execution Timestamp', timestamp],
     ['Automation Engine', 'Selenium WebDriver (Chrome)'],
-    ['Target Platform', `Vastra ${platform} App`],
+    ['Target Platform', `Truth Pulse ${platform} App`],
     ['Test Environment', 'GitHub Pages / Live Production']
   ];
 
@@ -227,7 +227,7 @@ async function generateReport(testResults, platform = 'Web') {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vastra E2E Test Execution Report</title>
+  <title>Truth Pulse E2E Test Execution Report</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -457,7 +457,7 @@ async function generateReport(testResults, platform = 'Web') {
   <div class="container">
     <header>
       <div>
-        <h1>Vastra Automation Dashboard</h1>
+        <h1>Truth Pulse Automation Dashboard</h1>
         <p style="color: var(--text-muted); margin-top: 4px;">Live E2E Verification Report</p>
       </div>
       <div class="meta-info">

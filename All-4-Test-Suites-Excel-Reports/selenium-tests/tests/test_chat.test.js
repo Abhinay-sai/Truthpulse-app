@@ -46,14 +46,14 @@ describe('Web Chatbot Interactivity Suite', function () {
 
   it('TC-CHAT-02: Verify chatbot placeholder greeting messages', async function () {
     await recordResult('TC-CHAT-02', 'UI/UX', 'Verify bot displays initial stylist hello statement', async () => {
-      const chatPane = await driver.findElement(By.xpath("//*[contains(text(), 'Vastra') or contains(text(), 'stylist') or contains(text(), 'Ask me')]"));
+      const chatPane = await driver.findElement(By.xpath("//*[contains(text(), 'Truth Pulse') or contains(text(), 'stylist') or contains(text(), 'Ask me')]"));
       expect(await chatPane.isDisplayed()).to.be.true;
     });
   });
 
   it('TC-CHAT-03: Input text box rendering check', async function () {
     await recordResult('TC-CHAT-03', 'UI/UX', 'Verify message input textbox is visible', async () => {
-      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Vastra...' or @type='text']"));
+      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Truth Pulse...' or @type='text']"));
       expect(await textInput.isDisplayed()).to.be.true;
     });
   });
@@ -68,7 +68,7 @@ describe('Web Chatbot Interactivity Suite', function () {
 
   it('TC-CHAT-05: Empty message input validation', async function () {
     await recordResult('TC-CHAT-05', 'Validation', 'Verify empty spaces submission is ignored by chatbot', async () => {
-      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Vastra...' or @type='text']"));
+      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Truth Pulse...' or @type='text']"));
       const sendBtn = await driver.findElement(By.xpath("//button[@type='submit' or contains(@class, 'send') or contains(@class, 'button')]"));
       
       await textInput.clear();
@@ -83,7 +83,7 @@ describe('Web Chatbot Interactivity Suite', function () {
 
   it('TC-CHAT-06: Submission of valid styling query', async function () {
     await recordResult('TC-CHAT-06', 'Functional', 'Type and send query text to Groq server', async () => {
-      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Vastra...' or @type='text']"));
+      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Truth Pulse...' or @type='text']"));
       await textInput.clear();
       await textInput.sendKeys('Suggest a casual outfit for men');
       
@@ -118,7 +118,7 @@ describe('Web Chatbot Interactivity Suite', function () {
 
   it('TC-CHAT-09: Sending query using ENTER keyboard key', async function () {
     await recordResult('TC-CHAT-09', 'Functional', 'Verify user can submit prompt by pressing Enter key', async () => {
-      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Vastra...' or @type='text']"));
+      const textInput = await driver.findElement(By.xpath("//input[@placeholder='Ask Truth Pulse...' or @type='text']"));
       await textInput.clear();
       await textInput.sendKeys('Which colors complement gray?', Key.RETURN);
       
