@@ -1,9 +1,9 @@
 const axios = require('axios');
 
 async function testVerify() {
-  console.log("Testing truthpulse-backend.onrender.com verification endpoint...");
+  console.log("Testing truthpulse-app.onrender.com verification endpoint...");
   try {
-    const res = await axios.post('https://truthpulse-backend.onrender.com/auth/verify-email', {
+    const res = await axios.post('https://truthpulse-app.onrender.com/auth/verify-email', {
       email: 'test@example.com',
       otp: '123456'
     });

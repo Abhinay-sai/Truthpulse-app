@@ -1,7 +1,7 @@
 import urllib.request
 import json
 
-url = "https://truthpulse-backend.onrender.com/auth/verify-email"
+url = "https://truthpulse-app.onrender.com/auth/verify-email"
 data = json.dumps({"email": "test@example.com", "otp": "123456"}).encode("utf-8")
 headers = {"Content-Type": "application/json"}
 req = urllib.request.Request(url, data=data, headers=headers, method="POST")

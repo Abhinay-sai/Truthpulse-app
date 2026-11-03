@@ -6,7 +6,7 @@ async function testLiveAPI() {
   try {
     console.log("Logging in to live API via 2FA...");
     // 1. Try to login
-    const loginRes = await axios.post('https://truthpulse-backend.onrender.com/auth/login', {
+    const loginRes = await axios.post('https://truthpulse-app.onrender.com/auth/login', {
       email: 'abhinaysai21@gmail.com',
       password: 'Abhi@2024' // Assuming this based on screenshot
     });
@@ -16,7 +16,7 @@ async function testLiveAPI() {
        return;
     }
     
-    const verifyRes = await axios.post('https://truthpulse-backend.onrender.com/auth/2fa/login-verify', {
+    const verifyRes = await axios.post('https://truthpulse-app.onrender.com/auth/2fa/login-verify', {
       userId: loginRes.data.userId,
       pin: '000000'
     });
@@ -37,7 +37,7 @@ async function testLiveAPI() {
     form.append('media', fs.createReadStream(imagePath));
     
     try {
-      const analyzeRes = await axios.post('https://truthpulse-backend.onrender.com/analyze', form, {
+      const analyzeRes = await axios.post('https://truthpulse-app.onrender.com/analyze', form, {
         headers: {
           ...form.getHeaders(),
           'Authorization': `Bearer ${token}`
