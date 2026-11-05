@@ -10,15 +10,58 @@ permissions:
 
 jobs:
   upload-artifacts:
-    name: Package and Upload All Test Reports
+    name: Package and Upload All 4 Test Reports
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Upload Test Reports Artifact
+      # 1. Web Selenium E2E Reports Artifact
+      - name: Upload 1 - Web Selenium E2E Reports
         uses: actions/upload-artifact@v4
         with:
-          name: All-4-Test-Suites-Excel-Reports
+          name: 1-Web-Selenium-E2E-Reports
+          path: |
+            All-4-Test-Suites-Excel-Reports/selenium-tests/
+            All-4-Test-Suites-Excel-Reports/Test Results/
+          retention-days: 30
+
+      # 2. Mobile Appium E2E Reports Artifact
+      - name: Upload 2 - Mobile Appium E2E Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: 2-Mobile-Appium-E2E-Reports
+          path: All-4-Test-Suites-Excel-Reports/appium-tests/
+          retention-days: 30
+
+      # 3. Performance & Load Test Reports Artifact
+      - name: Upload 3 - Performance & Load Test Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3-Performance-Load-Test-Reports
+          path: All-4-Test-Suites-Excel-Reports/load-tests/
+          retention-days: 30
+
+      # 4. Security & Vulnerability Test Reports Artifact
+      - name: Upload 4 - Security & Vulnerability Test Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: 4-Security-Vulnerability-Test-Reports
+          path: All-4-Test-Suites-Excel-Reports/Vulnerability Test Results/
+          retention-days: 30
+
+      # 5. Consolidated Excel Spreadsheets Artifact
+      - name: Upload 5 - Consolidated Excel Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: 5-Consolidated-Excel-Reports
+          path: All-4-Test-Suites-Excel-Reports/consolidated-excel-reports/
+          retention-days: 30
+
+      # 6. Master Package Artifact
+      - name: Upload All-in-One Master Test Suite Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: All-4-Test-Suites-Excel-Reports-Master
           path: All-4-Test-Suites-Excel-Reports/
           retention-days: 30
